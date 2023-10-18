@@ -1,6 +1,5 @@
 package datascraping.persistence;
 
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -23,14 +22,14 @@ public class JsonPersistence implements DataPersistence {
                     JSONObject outputJson = (JSONObject) parser.parse("{" + v + "}");
                     arrJson.add(outputJson);
                 } catch (ParseException e) {
+                    System.out.println(k + ": {" + v + "}");
                     throw new RuntimeException(e);
                 }
             });
             FileWriter writer = new FileWriter(DEFAULT_PATH + target);
             writer.write(arrJson.toString());
             writer.close();
-        } catch (
-                IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

@@ -2,6 +2,7 @@ package datascraping;
 
 import datascraping.persistence.DataPersistence;
 import datascraping.persistence.JsonPersistence;
+import datascraping.scraping.NiftyGatewayScraper;
 import datascraping.scraping.OpenSeaScraper;
 import datascraping.scraping.Scraper;
 
@@ -13,7 +14,8 @@ public class DataCollector {
 
     public DataCollector() {
         scrapers = new Scraper[] {
-                new OpenSeaScraper()
+                new OpenSeaScraper(),
+                new NiftyGatewayScraper()
         };
         persistence = new JsonPersistence();
     }
