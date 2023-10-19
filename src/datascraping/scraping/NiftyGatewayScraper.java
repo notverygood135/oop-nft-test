@@ -50,7 +50,6 @@ public class NiftyGatewayScraper implements Scraper{
 
                     if (!Objects.equals(name, "") && !Objects.equals(name, "null")) {
                         sex.put(id, properties);
-                        System.out.println(id + ": {" + properties + "}");
                     }
                 }
             } catch (Exception ex) {
