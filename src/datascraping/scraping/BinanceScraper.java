@@ -1,0 +1,65 @@
+package datascraping.scraping;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import org.jsoup.Connection.Method;
+import org.jsoup.Jsoup;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Objects;
+
+public class BinanceScraper implements Scraper {
+    @Override
+    public Map<String, String> scrape() {
+        Map<String, String> sex = new LinkedHashMap<>();
+        String url = "https://www.binance.com/bapi/nft/v1/friendly/nft/ranking/trend-collection";
+        final double usdToEth = 1582.60;
+
+        try {
+            JSONParser parser = new JSONParser();
+            String doc = Jsoup.connect(url).method(Method.POST)
+                    .userAgent("Jsoup client")
+                    .header("Content-Type", "application/json")
+                    .header("Accept", "application/json")
+                    .requestBody("{\"network\":\"ALL\",\"period\":\"24H\",\"sortType\":\"volumeDesc\",\"page\":1,\"rows\":500}")
+                    .ignoreContentType(true)
+                    .execute()
+                    .body();
+            JSONObject json = (JSONObject) parser.parse(doc);
+            JSONObject data = (JSONObject) json.get("data");
+            JSONArray rows = (JSONArray) data.get("rows");
+            System.out.println(rows);
+
+            for (Object row : rows) {
+                JSONObject rowJson = (JSONObject) row;
+                String name = rowJson.get("title").toString().replace("\"", "'");
+                String id = rowJson.get("collectionId").toString();
+                double floorPrice = Double.parseDouble(rowJson.get("floorPrice").toString());
+                int numOwners = Integer.parseInt(rowJson.get("ownersCount").toString());
+                double volume = Double.parseDouble(rowJson.get("volume").toString()) / usdToEth / 100.0;
+                double volumeChange = Double.parseDouble(rowJson.get("volumeRate").toString()) / 100.0;
+                int totalSupply = Integer.parseInt(rowJson.get("itemsCount").toString());
+
+                String properties =
+                        "\"name\": \"" + name + "\", " +
+                                "\"id\": \"" + id + "\", " +
+                                "\"floorPrice\": \"" + floorPrice + "\", " +
+                                "\"numOwners\": \"" + numOwners + "\", " +
+                                "\"volume\": \"" + volume + "\", " +
+                                "\"volumeChange\": \"" + volumeChange + "\", " +
+                                "\"totalSupply\": \"" + totalSupply + "\"";
+
+                if (!Objects.equals(name, "") && !Objects.equals(name, "null")) {
+                    sex.put(id, properties);
+                }
+            }
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return sex;
+    }
+}

@@ -2,9 +2,7 @@ package datascraping;
 
 import datascraping.persistence.DataPersistence;
 import datascraping.persistence.JsonPersistence;
-import datascraping.scraping.NiftyGatewayScraper;
-import datascraping.scraping.OpenSeaScraper;
-import datascraping.scraping.Scraper;
+import datascraping.scraping.*;
 
 import java.util.Map;
 
@@ -15,7 +13,9 @@ public class DataCollector {
     public DataCollector() {
         scrapers = new Scraper[] {
                 new OpenSeaScraper(),
-                new NiftyGatewayScraper()
+                new NiftyGatewayScraper(),
+                new BinanceScraper(),
+                new RaribleScraper()
         };
         persistence = new JsonPersistence();
     }
