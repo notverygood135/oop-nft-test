@@ -19,7 +19,7 @@ public class BinanceScraper implements Scraper {
         final double usdToEth = 1582.60;
 
         try {
-            JSONParser parser = new JSONParser();
+            JSONParser parser = new JSONParser();// string to json
             String doc = Jsoup.connect(url).method(Method.POST)
                     .userAgent("Jsoup client")
                     .header("Content-Type", "application/json")

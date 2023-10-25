@@ -4,7 +4,6 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
-public interface Scraper {
+public interface BlogScraper {
     Map<String, JSONObject> scrape();
-
 }

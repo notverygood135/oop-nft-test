@@ -1,7 +1,9 @@
 package datascraping.persistence;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -13,14 +15,14 @@ import static datascraping.persistence.FilePersistence.DEFAULT_PATH;
 
 public class JsonPersistence implements DataPersistence {
     @Override
-    public void save(Map<String, String> arr, String target) {
+    public void save(Map<String, JSONObject> arr, String target) {
         try {
             JSONArray arrJson = new JSONArray();
             JSONParser parser = new JSONParser();
             arr.forEach((k, v) -> {
                 try {
                     JSONObject outputJson = (JSONObject) parser.parse("{" + v + "}");
-                    arrJson.add(outputJson);
+                    arrJson.put(outputJson);
                 } catch (ParseException e) {
                     System.out.println(k + ": {" + v + "}");
                     throw new RuntimeException(e);
