@@ -26,7 +26,11 @@ public class NiftyGatewayScraper implements Scraper {
                 for (Object result : results) {
                     JSONObject resultJson = (JSONObject) result;
                     JSONObject collectionJson = (JSONObject) resultJson.get("collection");
-                    String name = collectionJson.get("niftyTitle").toString().replace("\"", "'");
+                    String name = collectionJson.get("niftyTitle")
+                            .toString()
+                            .replace("\"", "'")
+                            .replace(":", "/")
+                            .replace("\\", "/");
                     String id = collectionJson.get("niftyContractAddress").toString();
                     double floorPrice = Double.parseDouble(resultJson.get("floorPrice").toString()) / usdToEth / 100.0;
                     int numOfSales = Integer.parseInt(resultJson.get("oneDayNumTotalSales").toString());
@@ -53,6 +57,7 @@ public class NiftyGatewayScraper implements Scraper {
                 }
                 for (Map.Entry<String, String> row: outputRows.entrySet()) {
                     String valueString = '{' + row.getValue() + '}';
+                    System.out.println(valueString);
                     sex.put(row.getKey(), new JSONObject(valueString));
                 }
             } catch (Exception ex) {
