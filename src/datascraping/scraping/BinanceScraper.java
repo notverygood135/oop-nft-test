@@ -2,7 +2,7 @@ package datascraping.scraping;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
+
 
 import org.jsoup.Connection.Method;
 import org.jsoup.Jsoup;

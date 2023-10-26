@@ -16,9 +16,10 @@ public class DataCollector {
                 new OpenSeaScraper(),
                 new NiftyGatewayScraper(),
                 new BinanceScraper(),
-                new RaribleScraper()
+                new RaribleScraper(),
+                new NftPlazasScraper()
         };
-        BlogScraper blogScraper = new NftPlazasScraper();
+
         persistence = new JsonPersistence();
     }
 
@@ -32,8 +33,7 @@ public class DataCollector {
             persistence.save(data, target);
             System.out.println(data.size());
         }
-//        BinanceScraper blogScraper = null;
-//        Map<String, JSONObject> data = blogScraper.scrape();
+
     }
 
     public static void main(String[] args) {
