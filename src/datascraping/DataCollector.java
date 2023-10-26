@@ -8,32 +8,32 @@ import org.json.JSONObject;
 import java.util.Map;
 
 public class DataCollector {
-  //  private final Scraper[] scrapers;
+    private final Scraper[] scrapers;
     private final DataPersistence persistence;
 
     public DataCollector() {
-     /*   scrapers = new Scraper[] {
+        scrapers = new Scraper[] {
                 new OpenSeaScraper(),
                 new NiftyGatewayScraper(),
                 new BinanceScraper(),
                 new RaribleScraper()
-        };*/
+        };
         BlogScraper blogScraper = new NftPlazasScraper();
         persistence = new JsonPersistence();
     }
 
     public void run() {
 
-      /*  for (Scraper scraper : scrapers) {
-
-           Map<String, JSONObject> data = scraper.scrape();
+        for (Scraper scraper : scrapers) {
+            Map<String, JSONObject> data = scraper.scrape();
 
             String scraperClassName = scraper.getClass().getSimpleName();
             String target = scraperClassName.substring(0, scraperClassName.indexOf("Scraper")).toLowerCase() + ".json";
             persistence.save(data, target);
-        }*/
-        BinanceScraper blogScraper = null;
-        Map<String, JSONObject> data = blogScraper.scrape();
+            System.out.println(data.size());
+        }
+//        BinanceScraper blogScraper = null;
+//        Map<String, JSONObject> data = blogScraper.scrape();
     }
 
     public static void main(String[] args) {

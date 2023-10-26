@@ -1,7 +1,7 @@
 package datascraping.scraping;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import org.jsoup.Connection.Method;
@@ -11,27 +11,26 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class BinanceScraper implements Scraper {
-    @Override
-    public Map<String, String> scrape() {
-        Map<String, String> sex = new LinkedHashMap<>();
+public class BinanceScraper implements Scraper{
+//    @Override
+    public Map<String, JSONObject> scrape() {
+        Map<String, JSONObject> sex = new LinkedHashMap<>();
+        Map<String, String> outputRows = new LinkedHashMap<>();
         String url = "https://www.binance.com/bapi/nft/v1/friendly/nft/ranking/trend-collection";
         final double usdToEth = 1582.60;
 
         try {
-            JSONParser parser = new JSONParser();// string to json
             String doc = Jsoup.connect(url).method(Method.POST)
                     .userAgent("Jsoup client")
                     .header("Content-Type", "application/json")
                     .header("Accept", "application/json")
-                    .requestBody("{\"network\":\"ALL\",\"period\":\"24H\",\"sortType\":\"volumeDesc\",\"page\":1,\"rows\":500}")
+                    .requestBody("{\"network\":\"ALL\",\"period\":\"24H\",\"sortType\":\"volumeDesc\",\"page\":1,\"rows\":100}")
                     .ignoreContentType(true)
                     .execute()
                     .body();
-            JSONObject json = (JSONObject) parser.parse(doc);
+            JSONObject json = new JSONObject(doc);
             JSONObject data = (JSONObject) json.get("data");
             JSONArray rows = (JSONArray) data.get("rows");
-            System.out.println(rows);
 
             for (Object row : rows) {
                 JSONObject rowJson = (JSONObject) row;
@@ -53,8 +52,12 @@ public class BinanceScraper implements Scraper {
                                 "\"totalSupply\": \"" + totalSupply + "\"";
 
                 if (!Objects.equals(name, "") && !Objects.equals(name, "null")) {
-                    sex.put(id, properties);
+                    outputRows.put(id, properties);
                 }
+            }
+            for (Map.Entry<String, String> row: outputRows.entrySet()) {
+                String valueString = '{' + row.getValue() + '}';
+                sex.put(row.getKey(), new JSONObject(valueString));
             }
         }
         catch (Exception ex) {
