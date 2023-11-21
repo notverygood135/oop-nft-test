@@ -30,7 +30,7 @@ public class DataCollector {
                 new Binance7DScraper(),
                 new Rarible7DScraper()
         };
-        BlogScraper blogScraper = new NftPlazasScraper();
+      //  BlogScraper blogScraper = (BlogScraper) new NftPlazasScraper();
         persistence = new JsonPersistence();
     }
 
