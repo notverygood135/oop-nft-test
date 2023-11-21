@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class NftPlazasScraper implements BlogScraper{
+public class NftPlazasScraper implements Scraper{
     @Override
     public Map<String, JSONObject> scrape() {
         final String url = "https://nftplazas.com/nft-collectibles-news/";
