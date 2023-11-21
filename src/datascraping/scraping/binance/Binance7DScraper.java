@@ -1,9 +1,8 @@
-package datascraping.scraping;
+package datascraping.scraping.binance;
 
+import datascraping.scraping.Scraper;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
-
 import org.jsoup.Connection.Method;
 import org.jsoup.Jsoup;
 
@@ -11,7 +10,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class BinanceScraper implements Scraper{
+public class Binance7DScraper implements Scraper {
 //    @Override
     public Map<String, JSONObject> scrape() {
         Map<String, JSONObject> sex = new LinkedHashMap<>();
@@ -24,7 +23,7 @@ public class BinanceScraper implements Scraper{
                     .userAgent("Jsoup client")
                     .header("Content-Type", "application/json")
                     .header("Accept", "application/json")
-                    .requestBody("{\"network\":\"ALL\",\"period\":\"24H\",\"sortType\":\"volumeDesc\",\"page\":1,\"rows\":100}")
+                    .requestBody("{\"network\":\"ALL\",\"period\":\"7D\",\"sortType\":\"volumeDesc\",\"page\":1,\"rows\":100}")
                     .ignoreContentType(true)
                     .execute()
                     .body();
@@ -36,6 +35,7 @@ public class BinanceScraper implements Scraper{
                 JSONObject rowJson = (JSONObject) row;
                 String name = rowJson.get("title").toString().replace("\"", "'");
                 String id = rowJson.get("collectionId").toString();
+                String image = rowJson.get("coverUrl").toString();
                 double floorPrice = Double.parseDouble(rowJson.get("floorPrice").toString());
                 int numOwners = Integer.parseInt(rowJson.get("ownersCount").toString());
                 double volume = Double.parseDouble(rowJson.get("volume").toString()) / usdToEth / 100.0;
@@ -44,12 +44,13 @@ public class BinanceScraper implements Scraper{
 
                 String properties =
                         "\"name\": \"" + name + "\", " +
-                                "\"id\": \"" + id + "\", " +
-                                "\"floorPrice\": \"" + floorPrice + "\", " +
-                                "\"numOwners\": \"" + numOwners + "\", " +
-                                "\"volume\": \"" + volume + "\", " +
-                                "\"volumeChange\": \"" + volumeChange + "\", " +
-                                "\"totalSupply\": \"" + totalSupply + "\"";
+                        "\"id\": \"" + id + "\", " +
+                        "\"image\": \"" + image + "\", " +
+                        "\"floorPrice\": \"" + floorPrice + "\", " +
+                        "\"numOwners\": \"" + numOwners + "\", " +
+                        "\"volume\": \"" + volume + "\", " +
+                        "\"volumeChange\": \"" + volumeChange + "\", " +
+                        "\"totalSupply\": \"" + totalSupply + "\"";
 
                 if (!Objects.equals(name, "") && !Objects.equals(name, "null")) {
                     outputRows.put(id, properties);

@@ -1,5 +1,6 @@
-package datascraping.scraping;
+package datascraping.scraping.openSea;
 
+import datascraping.scraping.Scraper;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -9,7 +10,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class OpenSeaScraper implements Scraper {
+public class OpenSea1DScraper implements Scraper {
     @Override
     public Map<String, JSONObject> scrape() {
         Map<String, JSONObject> sex = new LinkedHashMap<>();
@@ -33,8 +34,11 @@ public class OpenSeaScraper implements Scraper {
                 JSONObject record = (JSONObject) initialRecords.get(s);
                 if (record.has("name")) {
                     String id = record.get("__id").toString();
+                    String name = record.get("name").toString();
+                    String image = record.get("logo").toString();
                     String properties =
-                            "\"name\": " + "\"" + record.get("name").toString() + "\"";
+                            "\"name\": " + "\"" + name + "\", " +
+                            "\"image\": " + "\"" + image + "\"";
                     if (!outputRows.containsKey(id)) {
                         outputRows.put(id, "\"id\": " + "\"" + id + "\"");
                     }
@@ -60,9 +64,9 @@ public class OpenSeaScraper implements Scraper {
                     String id = record.get("__id").toString().split(":")[1];
                     String properties =
                             "\"numOfSales\": " + "\"" + record.get("numOfSales").toString() + "\"" +
-                                    ", \"numOwners\": " + "\"" + record.get("numOwners").toString() + "\"" +
-                                    ", \"volumeChange\": " + "\"" + record.get("volumeChange").toString() + "\"" +
-                                    ", \"totalSupply\": " + "\"" + record.get("totalSupply").toString() + "\"";
+                            ", \"numOwners\": " + "\"" + record.get("numOwners").toString() + "\"" +
+                            ", \"volumeChange\": " + "\"" + record.get("volumeChange").toString() + "\"" +
+                            ", \"totalSupply\": " + "\"" + record.get("totalSupply").toString() + "\"";
                     if (!outputRows.containsKey(id)) {
                         outputRows.put(id, "\"id\": " + "\"" + id + "\"");
                     }

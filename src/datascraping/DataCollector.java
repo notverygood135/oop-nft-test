@@ -3,6 +3,14 @@ package datascraping;
 import datascraping.persistence.DataPersistence;
 import datascraping.persistence.JsonPersistence;
 import datascraping.scraping.*;
+import datascraping.scraping.binance.Binance1DScraper;
+import datascraping.scraping.binance.Binance7DScraper;
+import datascraping.scraping.niftyGateway.NiftyGateway1DScraper;
+import datascraping.scraping.niftyGateway.NiftyGateway7DScraper;
+import datascraping.scraping.openSea.OpenSea1DScraper;
+import datascraping.scraping.openSea.OpenSea7DScraper;
+import datascraping.scraping.rarible.Rarible1DScraper;
+import datascraping.scraping.rarible.Rarible7DScraper;
 import org.json.JSONObject;
 
 import java.util.Map;
@@ -13,10 +21,14 @@ public class DataCollector {
 
     public DataCollector() {
         scrapers = new Scraper[] {
-                new OpenSeaScraper(),
-                new NiftyGatewayScraper(),
-                new BinanceScraper(),
-                new RaribleScraper()
+                new OpenSea1DScraper(),
+                new NiftyGateway1DScraper(),
+                new Binance1DScraper(),
+                new Rarible1DScraper(),
+                new OpenSea7DScraper(),
+                new NiftyGateway7DScraper(),
+                new Binance7DScraper(),
+                new Rarible7DScraper()
         };
         BlogScraper blogScraper = new NftPlazasScraper();
         persistence = new JsonPersistence();
@@ -32,7 +44,7 @@ public class DataCollector {
             persistence.save(data, target);
             System.out.println(data.size());
         }
-//        BinanceScraper blogScraper = null;
+//        Binance1DScraper blogScraper = null;
 //        Map<String, JSONObject> data = blogScraper.scrape();
     }
 

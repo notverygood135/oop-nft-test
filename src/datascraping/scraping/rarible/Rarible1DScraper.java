@@ -1,5 +1,8 @@
-package datascraping.scraping;
+package datascraping.scraping.rarible;
 
+import com.twitter.clientlib.JSON;
+import datascraping.scraping.Scraper;
+import datascraping.scraping.USDtoETHConversion;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -10,15 +13,13 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class RaribleScraper implements Scraper {
+public class Rarible1DScraper implements Scraper {
 //    @Override
     public Map<String, JSONObject> scrape() {
-//    public static void main(String[] args) {
-
         Map<String, JSONObject> sex = new LinkedHashMap<>();
         Map<String, String> outputRows = new LinkedHashMap<>();
         String url = "https://rarible.com/marketplace/api/v4/collections/search";
-        final double usdToEth = 1582.60;
+        final double usdToEth = USDtoETHConversion.convert();
 
         try {
             String doc = Jsoup.connect(url).method(Method.POST)
@@ -40,21 +41,25 @@ public class RaribleScraper implements Scraper {
                     .body();
             JSONArray rows = new JSONArray(doc);
 
+            int flag = 0;
             for (Object row : rows) {
                 JSONObject rowJson = (JSONObject) row;
                 JSONObject collection = (JSONObject) rowJson.get("collection");
+                JSONArray coverMedia = (JSONArray) collection.get("coverMedia");
                 JSONObject statistics = (JSONObject) rowJson.get("statistics");
                 JSONObject collectionStatistics = (JSONObject) collection.get("statistics");
 
                 String name = collection.get("name").toString().replace("\"", "'");
                 String id = collection.get("id").toString();
-
+                String image = "";
+                if (!coverMedia.isEmpty()) {
+                    image = coverMedia.getJSONObject(0).get("url").toString();
+                }
                 if (!statistics.has("floorPrice")) {
                     continue;
                 }
                 JSONObject floorPriceOneDay = (JSONObject) statistics.get("floorPrice");
                 double floorPrice = Double.parseDouble(floorPriceOneDay.get("value").toString());
-
 
                 JSONObject usdAmount = (JSONObject) statistics.get("usdAmount");
                 double volume = Double.parseDouble(usdAmount.get("value").toString()) / usdToEth;
@@ -67,6 +72,7 @@ public class RaribleScraper implements Scraper {
                 String properties =
                         "\"name\": \"" + name + "\", " +
                         "\"id\": \"" + id + "\", " +
+                        "\"image\": \"" + image + "\", " +
                         "\"floorPrice\": \"" + floorPrice + "\", " +
                         "\"numOwners\": \"" + numOwners + "\", " +
                         "\"volume\": \"" + volume + "\", " +

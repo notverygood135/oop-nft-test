@@ -1,5 +1,6 @@
-package datascraping.scraping;
+package datascraping.scraping.niftyGateway;
 
+import datascraping.scraping.Scraper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
@@ -8,7 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class NiftyGatewayScraper implements Scraper {
+public class NiftyGateway7DScraper implements Scraper {
 //    @Override
     public Map<String, JSONObject> scrape() {
         Map<String, JSONObject> sex = new LinkedHashMap<>();
@@ -32,18 +33,20 @@ public class NiftyGatewayScraper implements Scraper {
                             .replace(":", "/")
                             .replace("\\", "/");
                     String id = collectionJson.get("niftyContractAddress").toString();
+                    String image = collectionJson.get("niftyDisplayImage").toString();
                     double floorPrice = Double.parseDouble(resultJson.get("floorPrice").toString()) / usdToEth / 100.0;
-                    int numOfSales = Integer.parseInt(resultJson.get("oneDayNumTotalSales").toString());
+                    int numOfSales = Integer.parseInt(resultJson.get("sevenDayNumTotalSales").toString());
                     int numOwners = Integer.parseInt(resultJson.get("numOwners").toString());
-                    double volume = !resultJson.get("oneDayTotalVolume").toString().equals("null") ?
-                            Double.parseDouble(resultJson.get("oneDayTotalVolume").toString()) / usdToEth / 100.0 : 0.0;
-                    double volumeChange = !resultJson.get("oneDayChange").toString().equals("null") ?
-                            Double.parseDouble(resultJson.get("oneDayChange").toString()) / 100.0 : 0.0;
+                    double volume = !resultJson.get("sevenDayTotalVolume").toString().equals("null") ?
+                            Double.parseDouble(resultJson.get("sevenDayTotalVolume").toString()) / usdToEth / 100.0 : 0.0;
+                    double volumeChange = !resultJson.get("sevenDayChange").toString().equals("null") ?
+                            Double.parseDouble(resultJson.get("sevenDayChange").toString()) / 100.0 : 0.0;
                     int totalSupply = Integer.parseInt(resultJson.get("totalSupply").toString());
 
                     String properties =
                             "\"name\": \"" + name + "\", " +
                             "\"id\": \"" + id + "\", " +
+                            "\"image\": \"" + image + "\", " +
                             "\"floorPrice\": \"" + floorPrice + "\", " +
                             "\"numOfSales\": \"" + numOfSales + "\", " +
                             "\"numOwners\": \"" + numOwners + "\", " +
@@ -57,7 +60,6 @@ public class NiftyGatewayScraper implements Scraper {
                 }
                 for (Map.Entry<String, String> row: outputRows.entrySet()) {
                     String valueString = '{' + row.getValue() + '}';
-                    System.out.println(valueString);
                     sex.put(row.getKey(), new JSONObject(valueString));
                 }
             } catch (Exception ex) {
