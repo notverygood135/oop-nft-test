@@ -38,7 +38,7 @@ public class OpenSea7DScraper implements Scraper {
                     String image = record.get("logo").toString();
                     String properties =
                             "\"name\": " + "\"" + name + "\", " +
-                            "\"image\": " + "\"" + image + "\"";
+                            "\"url\": " + "\"" + image + "\"";
                     if (!outputRows.containsKey(id)) {
                         outputRows.put(id, "\"id\": " + "\"" + id + "\"");
                     }

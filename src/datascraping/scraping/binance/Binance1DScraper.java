@@ -46,7 +46,7 @@ public class Binance1DScraper implements Scraper {
                 String properties =
                         "\"name\": \"" + name + "\", " +
                         "\"id\": \"" + id + "\", " +
-                        "\"image\": \"" + image + "\", " +
+                        "\"url\": \"" + image + "\", " +
                         "\"floorPrice\": \"" + floorPrice + "\", " +
                         "\"numOwners\": \"" + numOwners + "\", " +
                         "\"volume\": \"" + volume + "\", " +

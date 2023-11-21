@@ -47,7 +47,7 @@ public class NiftyGateway1DScraper implements Scraper {
                     String properties =
                             "\"name\": \"" + name + "\", " +
                             "\"id\": \"" + id + "\", " +
-                            "\"image\": \"" + image + "\", " +
+                            "\"url\": \"" + image + "\", " +
                             "\"floorPrice\": \"" + floorPrice + "\", " +
                             "\"numOfSales\": \"" + numOfSales + "\", " +
                             "\"numOwners\": \"" + numOwners + "\", " +
