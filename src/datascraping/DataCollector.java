@@ -33,7 +33,7 @@ public class DataCollector {
                 new TwitterScraper()
         };
 
-        BlogScraper blogScraper = (BlogScraper) new NftPlazasScraper();
+        // BlogScraper blogScraper = (BlogScraper) new NftPlazasScraper();
         persistence = new JsonPersistence();
     }
 
