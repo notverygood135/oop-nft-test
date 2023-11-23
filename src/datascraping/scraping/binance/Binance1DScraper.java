@@ -1,6 +1,7 @@
 package datascraping.scraping.binance;
 
 import datascraping.scraping.Scraper;
+import datascraping.utils.USDtoETHConversion;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -12,12 +13,12 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Binance1DScraper implements Scraper {
-//    @Override
+    @Override
     public Map<String, JSONObject> scrape() {
         Map<String, JSONObject> sex = new LinkedHashMap<>();
         Map<String, String> outputRows = new LinkedHashMap<>();
         String url = "https://www.binance.com/bapi/nft/v1/friendly/nft/ranking/trend-collection";
-        final double usdToEth = 1582.60;
+        final double usdToEth = USDtoETHConversion.convert();
 
         try {
             String doc = Jsoup.connect(url).method(Method.POST)

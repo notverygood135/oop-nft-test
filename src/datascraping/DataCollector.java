@@ -11,6 +11,7 @@ import datascraping.scraping.openSea.OpenSea1DScraper;
 import datascraping.scraping.openSea.OpenSea7DScraper;
 import datascraping.scraping.rarible.Rarible1DScraper;
 import datascraping.scraping.rarible.Rarible7DScraper;
+import datascraping.scraping.twitter.TwitterScraper;
 import org.json.JSONObject;
 
 import java.util.Map;
@@ -28,9 +29,11 @@ public class DataCollector {
                 new OpenSea7DScraper(),
                 new NiftyGateway7DScraper(),
                 new Binance7DScraper(),
-                new Rarible7DScraper()
+                new Rarible7DScraper(),
+                new TwitterScraper()
         };
-      //  BlogScraper blogScraper = (BlogScraper) new NftPlazasScraper();
+
+        // BlogScraper blogScraper = (BlogScraper) new NftPlazasScraper();
         persistence = new JsonPersistence();
     }
 
@@ -44,8 +47,7 @@ public class DataCollector {
             persistence.save(data, target);
             System.out.println(data.size());
         }
-//        Binance1DScraper blogScraper = null;
-//        Map<String, JSONObject> data = blogScraper.scrape();
+        Map<String, JSONObject> data = blogScraper.scrape();
     }
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package datascraping.scraping;
+package datascraping.utils;
 
 import org.json.JSONObject;
 import org.jsoup.Jsoup;

@@ -6,9 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="HistoryOfVietnamProject" />
         <module name="scrapetest" />
+        <module name="Scrapetest" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Scrapetest" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>

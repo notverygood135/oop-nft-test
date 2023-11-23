@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>group21</groupId>
-	<artifactId>HistoryOfVietnamProject</artifactId>
+	<artifactId>Scrapetest</artifactId>
 	<version>1.0</version>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -39,7 +39,12 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>4.14.1</version>
+			<version>4.15.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-remote-driver</artifactId>
+			<version>4.15.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.openjfx</groupId>
@@ -76,15 +81,5 @@
 			<artifactId>javafx-media</artifactId>
 			<version>19</version>
 		</dependency>
-        <dependency>
-            <groupId>com.vaadin.external.google</groupId>
-            <artifactId>android-json</artifactId>
-            <version>0.0.20131108.vaadin1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.15.2</version>
-        </dependency>
-    </dependencies>
+	</dependencies>
 </project>
