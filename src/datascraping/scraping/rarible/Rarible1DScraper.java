@@ -1,8 +1,7 @@
 package datascraping.scraping.rarible;
 
-import com.twitter.clientlib.JSON;
 import datascraping.scraping.Scraper;
-import datascraping.scraping.USDtoETHConversion;
+import datascraping.utils.USDtoETHConversion;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

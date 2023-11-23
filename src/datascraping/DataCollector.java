@@ -11,6 +11,7 @@ import datascraping.scraping.openSea.OpenSea1DScraper;
 import datascraping.scraping.openSea.OpenSea7DScraper;
 import datascraping.scraping.rarible.Rarible1DScraper;
 import datascraping.scraping.rarible.Rarible7DScraper;
+import datascraping.scraping.twitter.TwitterScraper;
 import org.json.JSONObject;
 
 import java.util.Map;
@@ -28,9 +29,10 @@ public class DataCollector {
                 new OpenSea7DScraper(),
                 new NiftyGateway7DScraper(),
                 new Binance7DScraper(),
-                new Rarible7DScraper()
+                new Rarible7DScraper(),
+                new TwitterScraper()
         };
-        BlogScraper blogScraper = new NftPlazasScraper();
+//        BlogScraper blogScraper = new NftPlazasScraper();
         persistence = new JsonPersistence();
     }
 

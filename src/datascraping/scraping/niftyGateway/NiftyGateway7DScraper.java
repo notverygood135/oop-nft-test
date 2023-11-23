@@ -1,6 +1,7 @@
 package datascraping.scraping.niftyGateway;
 
 import datascraping.scraping.Scraper;
+import datascraping.utils.USDtoETHConversion;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
@@ -10,11 +11,11 @@ import java.util.Map;
 import java.util.Objects;
 
 public class NiftyGateway7DScraper implements Scraper {
-//    @Override
+    @Override
     public Map<String, JSONObject> scrape() {
         Map<String, JSONObject> sex = new LinkedHashMap<>();
         Map<String, String> outputRows = new LinkedHashMap<>();
-        final double usdToEth = 1582.60;
+        final double usdToEth = USDtoETHConversion.convert();
 
         for (int pageNum = 1; pageNum <= 50; pageNum++) {
             final String url = "https://api.niftygateway.com/stats/rankings/?page=" + pageNum + "&page_size=50&sort=-one_day_total_volume";

@@ -1,6 +1,7 @@
 package datascraping.scraping.rarible;
 
 import datascraping.scraping.Scraper;
+import datascraping.utils.USDtoETHConversion;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.jsoup.Connection.Method;
@@ -16,7 +17,7 @@ public class Rarible7DScraper implements Scraper {
         Map<String, JSONObject> sex = new LinkedHashMap<>();
         Map<String, String> outputRows = new LinkedHashMap<>();
         String url = "https://rarible.com/marketplace/api/v4/collections/search";
-        final double usdToEth = 1582.60;
+        final double usdToEth = USDtoETHConversion.convert();
 
         try {
             String doc = Jsoup.connect(url).method(Method.POST)
