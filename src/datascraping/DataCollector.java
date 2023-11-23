@@ -32,11 +32,8 @@ public class DataCollector {
                 new Rarible7DScraper(),
                 new TwitterScraper()
         };
-<<<<<<< HEAD
-//        BlogScraper blogScraper = new NftPlazasScraper();
-=======
-      //  BlogScraper blogScraper = (BlogScraper) new NftPlazasScraper();
->>>>>>> 2801fb13b8dd21eab54b83a80b7ebdca10cf3952
+
+        BlogScraper blogScraper = (BlogScraper) new NftPlazasScraper();
         persistence = new JsonPersistence();
     }
 
@@ -50,8 +47,7 @@ public class DataCollector {
             persistence.save(data, target);
             System.out.println(data.size());
         }
-//        Binance1DScraper blogScraper = null;
-//        Map<String, JSONObject> data = blogScraper.scrape();
+        Map<String, JSONObject> data = blogScraper.scrape();
     }
 
     public static void main(String[] args) {
