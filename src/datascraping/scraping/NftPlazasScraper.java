@@ -15,28 +15,28 @@ public class NftPlazasScraper implements Scraper {
         try {
             pageDataMap = new HashMap();
             Document doc = Jsoup.connect(url).userAgent("Jsoup client").get();
-            Elements links1 = doc.select(" article[class^='post_item post_layout_news-excerpt']");
+            Elements elements = doc.select(" article[class^='post_item post_layout_news-excerpt']");
             int dem=0;
-            for (Element e : links1) {
+            for (Element e : elements) {
                 //dao o the bai viet ben ngoai
-                String detailLink = e.select("a").attr("href");
-                String dates = e.select("span[class='post_date post_meta_item']").text();
+                String link = e.select("a").attr("href");
+                String date = e.select("span[class='post_date post_meta_item']").text();
                 String img = e.select("img").attr("src");
                 String content = e.select("div[class='post_content entry-content']").text();
-                String h4 = e.select("h4").text();
+                String title = e.select("h4").text();
                 JSONObject postData = new JSONObject();
-                postData.put("detailLink", detailLink);
-                postData.put("date", dates);
+                postData.put("link", link);
+                postData.put("date", date);
                 postData.put("img", img);
                 postData.put("content", content);
-                postData.put("title", h4);
+                postData.put("title", title);
                 //dao o trong bai viet chi tiet
-                Document doc1 = Jsoup.connect(detailLink).userAgent("Jsoup client").get();
+                Document doc1 = Jsoup.connect(link).userAgent("Jsoup client").get();
                 String authors = doc1.select("meta[name='author']").attr("content");
                 String tag = doc1.select("a[rel='tag']").text();
                 postData.put("author", authors);
                 postData.put("tag", tag);
-                pageDataMap.put(detailLink, postData);
+                pageDataMap.put(link, postData);
                 dem++;
             }
             System.out.println("Tong so bai viet trang NFT PLAZA: " + dem);
@@ -45,9 +45,4 @@ public class NftPlazasScraper implements Scraper {
         }
         return pageDataMap;
     }
-    public static void main(String[] args) {
-        NftPlazasScraper nftPlazasScraper = new NftPlazasScraper();
-        nftPlazasScraper.scrape();
-    }
-        }
-
+}
