@@ -14,6 +14,7 @@ import datascraping.scraping.rarible.Rarible7DScraper;
 import datascraping.scraping.twitter.TwitterScraper;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.Map;
 
 public class DataCollector {
@@ -22,32 +23,40 @@ public class DataCollector {
 
     public DataCollector() {
         scrapers = new Scraper[] {
-                new OpenSea1DScraper(),
+            /*    new OpenSea1DScraper(),
                 new NiftyGateway1DScraper(),
                 new Binance1DScraper(),
                 new Rarible1DScraper(),
                 new OpenSea7DScraper(),
                 new NiftyGateway7DScraper(),
                 new Binance7DScraper(),
-                new Rarible7DScraper(),
-                new TwitterScraper()
+                new Rarible7DScraper(),*/
+                //new NftPlazasScraper(),
+               // new TwitterScraper()
+                new NftPlazasScraper(),
+                new NewBitcoinsScraper()
+
         };
 
-        // BlogScraper blogScraper = (BlogScraper) new NftPlazasScraper();
         persistence = new JsonPersistence();
     }
 
     public void run() {
 
         for (Scraper scraper : scrapers) {
-            Map<String, JSONObject> data = scraper.scrape();
+            Map<String, JSONObject> data = null;
+            try {
+                data = scraper.scrape();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
             String scraperClassName = scraper.getClass().getSimpleName();
             String target = scraperClassName.substring(0, scraperClassName.indexOf("Scraper")).toLowerCase() + ".json";
             persistence.save(data, target);
             System.out.println(data.size());
         }
-        Map<String, JSONObject> data = blogScraper.scrape();
+
     }
 
     public static void main(String[] args) {
