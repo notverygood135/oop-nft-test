@@ -1,11 +1,11 @@
-package datascraping.dataloader;
+package datascraping.dataloader.collection;
 
 import datascraping.model.CollectionEntity;
 import datascraping.model.NiftyGateway;
 
 import static datascraping.utils.Commons.DEFAULT_PATH;
 
-public class JsonLoaderNiftyGateway extends JsonLoader{
+public class JsonLoaderNiftyGateway extends JsonLoader {
     public JsonLoaderNiftyGateway(String source) {
         super(DEFAULT_PATH + source);
     }

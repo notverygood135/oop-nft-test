@@ -1,6 +1,4 @@
-package datascraping.dataloader;
-
-import datascraping.dataloader.collection.DataLoader;
+package datascraping.dataloader.blog;
 
 import java.io.File;
 

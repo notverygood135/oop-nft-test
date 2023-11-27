@@ -1,6 +1,7 @@
-package datascraping.dataloader;
+package datascraping.dataloader.collection;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import datascraping.dataloader.FileLoader;
 import datascraping.model.CollectionEntity;
 
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public abstract class JsonLoader extends FileLoader{
+public abstract class JsonLoader extends FileLoader {
 
     public JsonLoader(String source) {
         super(source);

@@ -1,10 +1,10 @@
-package datascraping.dataloader;
+package datascraping.dataloader.collection;
 import datascraping.model.CollectionEntity;
 import datascraping.model.Rarible;
 
 import static datascraping.utils.Commons.DEFAULT_PATH;
 
-public class JsonLoaderRarible extends JsonLoader{
+public class JsonLoaderRarible extends JsonLoader {
 
     public JsonLoaderRarible(String source) {
         super(DEFAULT_PATH + source);

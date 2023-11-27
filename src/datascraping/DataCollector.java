@@ -5,6 +5,9 @@ import datascraping.persistence.JsonPersistence;
 import datascraping.scraping.*;
 import datascraping.scraping.binance.Binance1DScraper;
 import datascraping.scraping.binance.Binance7DScraper;
+import datascraping.scraping.blogs.CoinTelegraphScraper;
+import datascraping.scraping.blogs.NewBitcoinsScraper;
+import datascraping.scraping.blogs.NftPlazasScraper;
 import datascraping.scraping.niftyGateway.NiftyGateway1DScraper;
 import datascraping.scraping.niftyGateway.NiftyGateway7DScraper;
 import datascraping.scraping.openSea.OpenSea1DScraper;
@@ -23,19 +26,18 @@ public class DataCollector {
 
     public DataCollector() {
         scrapers = new Scraper[] {
-            /*    new OpenSea1DScraper(),
+                new OpenSea1DScraper(),
                 new NiftyGateway1DScraper(),
                 new Binance1DScraper(),
                 new Rarible1DScraper(),
                 new OpenSea7DScraper(),
                 new NiftyGateway7DScraper(),
                 new Binance7DScraper(),
-                new Rarible7DScraper(),*/
-                //new NftPlazasScraper(),
-               // new TwitterScraper()
+                new Rarible7DScraper(),
+                new TwitterScraper(),
                 new NftPlazasScraper(),
-                new NewBitcoinsScraper()
-
+                new NewBitcoinsScraper(),
+                new CoinTelegraphScraper()
         };
 
         persistence = new JsonPersistence();
@@ -54,9 +56,8 @@ public class DataCollector {
             String scraperClassName = scraper.getClass().getSimpleName();
             String target = scraperClassName.substring(0, scraperClassName.indexOf("Scraper")).toLowerCase() + ".json";
             persistence.save(data, target);
-            System.out.println(data.size());
+            System.out.println(scraperClassName + data.size());
         }
-
     }
 
     public static void main(String[] args) {
