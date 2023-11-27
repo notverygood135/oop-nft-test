@@ -53,9 +53,8 @@ public class DataCollector {
             String scraperClassName = scraper.getClass().getSimpleName();
             String target = scraperClassName.substring(0, scraperClassName.indexOf("Scraper")).toLowerCase() + ".json";
             persistence.save(data, target);
-            System.out.println(data.size());
+            System.out.println(scraperClassName + data.size());
         }
-
     }
 
     public static void main(String[] args) {

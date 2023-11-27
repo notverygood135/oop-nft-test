@@ -21,36 +21,37 @@ public class NewBitcoinsScraper implements Scraper {
         try {
 
             FirefoxOptions options = new FirefoxOptions();
-            options.addArguments("--headless");
+//            options.addArguments("--headless");
 
             System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
 
             WebDriver driver = new FirefoxDriver(options);
-                int dem=0;
-                for(int i = 1; i <= PAGE_NUMBER; i++){
-                    driver.get("https://news.bitcoin.com/tag/nft-collection/page/" + i);
-                    sleep(3000);
-                    JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-                    String html = (String) jsExecutor.executeScript("return document.documentElement.outerHTML");
-                    Document document = Jsoup.parse(html);
-                    Elements elements = document.select("div[class='sc-fFDWmC ckwugE']");
+            int dem=0;
+            for(int i = 1; i <= PAGE_NUMBER; i++){
+                driver.get("https://news.bitcoin.com/tag/nft-collection/page/" + i);
+                sleep(3000);
+                JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+                String html = (String) jsExecutor.executeScript("return document.documentElement.outerHTML");
+                Document document = Jsoup.parse(html);
+                Elements elements = document.select("div[class='sc-fFDWmC ckwugE']");
 
-                    for(Element e : elements){
-                        JSONObject postData = new JSONObject();
-                        String link = "https://news.bitcoin.com" + e.selectFirst("a").attr("href");
-                        String img = e.select("img").attr("src");
-                        String title = e.select("h6").text();
-                        String dateContent = e.select("p[class='sc-dSJDGZ fBa-dYU']").text();
-                        String date = extractDate(dateContent);
-                        postData.put("link", link);
-                        postData.put("date", date);
-                        postData.put("img", img);
-                        postData.put("title", title);
-                        crawlTags(link,driver,postData,pageDataMap);
-                        dem++;
-                    }
+                for(Element e : elements){
+                    JSONObject postData = new JSONObject();
+                    String link = "https://news.bitcoin.com" + e.selectFirst("a").attr("href");
+                    String img = e.select("img").attr("src");
+                    String title = e.select("h6").text();
+                    String dateContent = e.select("p[class='sc-dSJDGZ fBa-dYU']").text();
+                    String date = extractDate(dateContent);
+                    postData.put("link", link);
+                    postData.put("date", date);
+                    postData.put("img", img);
+                    postData.put("title", title);
+                    crawlTags(link,driver,postData,pageDataMap);
+                    dem++;
                 }
+            }
             System.out.println("Tong so bai viet trang New Bitcoins: " + dem);
+            driver.quit();
 
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
@@ -68,7 +69,7 @@ public class NewBitcoinsScraper implements Scraper {
         String html = (String) jsExecutor.executeScript("return document.documentElement.outerHTML");
         Document document = Jsoup.parse(html);
         Elements e = document.select("div[class='sc-kjaWZf gpmoND']");
-        String content = document.select("div[class='article__body']").first().selectFirst("p").text();
+        String content = document.select("strong").text();
         postData.put("content", content);
         postData.put("tag", e.eachText());
         String author = document.select("h5[class='sc-cydatY sc-eVmQbm eFDwpm fwPqpt']").text();
