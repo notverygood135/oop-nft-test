@@ -1,10 +1,10 @@
-package datascraping.dataloader;
+package datascraping.dataloader.collection;
 import datascraping.model.CollectionEntity;
 import datascraping.model.OpenSea;
 
 import static datascraping.utils.Commons.DEFAULT_PATH;
 
-public class JsonLoaderOpenSea extends JsonLoader{
+public class JsonLoaderOpenSea extends JsonLoader {
     public JsonLoaderOpenSea(String src) {
         super(DEFAULT_PATH + src);
     }

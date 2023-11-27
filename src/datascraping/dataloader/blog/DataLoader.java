@@ -1,5 +1,7 @@
-package datascraping.dataloader;
+package datascraping.dataloader.blog;
 
+import datascraping.model.Blog;
+import datascraping.model.BlogEntity;
 import datascraping.model.CollectionEntity;
 
 import java.util.Collection;
@@ -10,5 +12,5 @@ public abstract class DataLoader {
     public DataLoader(String source) {
         this.source = source;
     }
-    public abstract Collection<CollectionEntity> load();
+    public abstract Collection<BlogEntity> load();
 }

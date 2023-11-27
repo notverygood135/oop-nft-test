@@ -1,4 +1,6 @@
-package datascraping.scraping;
+package datascraping.scraping.blogs;
+import datascraping.scraping.Scraper;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -33,7 +35,8 @@ public class NftPlazasScraper implements Scraper {
                 //dao o trong bai viet chi tiet
                 Document doc1 = Jsoup.connect(link).userAgent("Jsoup client").get();
                 String authors = doc1.select("meta[name='author']").attr("content");
-                String tag = doc1.select("a[rel='tag']").text();
+                JSONArray tag = new JSONArray();
+                tag.put(doc1.select("a[rel='tag']").text());
                 postData.put("author", authors);
                 postData.put("tag", tag);
                 pageDataMap.put(link, postData);

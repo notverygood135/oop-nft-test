@@ -1,4 +1,4 @@
-package datascraping.scraping;
+package datascraping.scraping.blogs;
 
 import datascraping.scraping.Scraper;
 import datascraping.utils.TweetHandler;

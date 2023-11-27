@@ -1,4 +1,5 @@
-package datascraping.scraping;
+package datascraping.scraping.blogs;
+import datascraping.scraping.Scraper;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
