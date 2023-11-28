@@ -1,8 +1,10 @@
-package datascraping.model;
+package datascraping.model.blog;
+
+import datascraping.model.Entity;
 
 import java.util.List;
 
-public abstract class BlogEntity {
+public abstract class BlogEntity extends Entity {
     private static int numEntity = 0;
     protected String link, img, title, content, author, date;
     protected List<String> tag;
@@ -46,6 +48,7 @@ public abstract class BlogEntity {
         return tag;
     }
 
+    @Override
     public void printDetail(){
         System.out.println("title: " + title + ", author: " + author + ", tags: " + tag);
     }

@@ -1,4 +1,4 @@
-package datascraping.model;
+package datascraping.model.blog;
 
 import java.util.List;
 

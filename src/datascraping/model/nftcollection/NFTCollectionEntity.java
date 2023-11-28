@@ -1,12 +1,14 @@
-package datascraping.model;
+package datascraping.model.nftcollection;
 
-public abstract class CollectionEntity {
+import datascraping.model.Entity;
+
+public abstract class NFTCollectionEntity extends Entity {
     private static int numEntity = 0;
-   protected  String id,name,url;
+    protected  String id,name,url;
     protected double floorPrice,volume,volumeChange;
     protected int numOfSales,numOwners,totalSupply;
 
-    public CollectionEntity(String id, String name, String url, double floorPrice, double volume, double volumeChange, int numOfSales, int numOwners, int totalSupply) {
+    public NFTCollectionEntity(String id, String name, String url, double floorPrice, double volume, double volumeChange, int numOfSales, int numOwners, int totalSupply) {
         this.numEntity++;
         this.id = id;
         this.name = name;
@@ -54,6 +56,8 @@ public abstract class CollectionEntity {
     public int getTotalSupply() {
         return totalSupply;
     }
+
+    @Override
     public void printDetail(){
         System.out.println("Thuc the: \n"+"1,id: "+getId()+"\n2,name "+getName()+"\n 3,URL "+getUrl()+"\n4,Floor price: "
         +getFloorPrice()+"\n5,Volume: "+getVolume()+"\n6,Volume change: "+getVolumeChange()

@@ -1,7 +1,7 @@
 package datascraping.dataloader.blog;
 
-import datascraping.model.Blog;
-import datascraping.model.BlogEntity;
+import datascraping.model.blog.Blog;
+import datascraping.model.blog.BlogEntity;
 
 import java.util.ArrayList;
 import java.util.Collection;
