@@ -2,7 +2,6 @@ package datascraping.dataloader.collection;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import datascraping.dataloader.FileLoader;
-import datascraping.model.CollectionEntity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,7 +9,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public abstract class JsonLoader extends FileLoader {
+public abstract class JsonLoader<CollectionEntity> extends FileLoader<CollectionEntity> {
 
     public JsonLoader(String source) {
         super(source);
@@ -22,6 +21,7 @@ public abstract class JsonLoader extends FileLoader {
 
         try {
             List<Map<String, Object>> dataList = new ObjectMapper().readValue(file, ArrayList.class);
+
             for (Map<String, Object> data : dataList) {
                 String id = getStringAndRemove(data, "id");
                 String name = getStringAndRemove(data, "name");
@@ -36,13 +36,11 @@ public abstract class JsonLoader extends FileLoader {
                 CollectionEntity entity = createSpecificEntity(
                         id, name, url, floorPrice, volume, volumeChange, numOfSales, numOwners, totalSupply
                 );
-
                 collectionEntities.add(entity);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
         return collectionEntities;
     }
 

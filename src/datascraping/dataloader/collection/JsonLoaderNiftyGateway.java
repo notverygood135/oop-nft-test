@@ -5,7 +5,7 @@ import datascraping.model.NiftyGateway;
 
 import static datascraping.utils.Commons.DEFAULT_PATH;
 
-public class JsonLoaderNiftyGateway extends JsonLoader {
+public class JsonLoaderNiftyGateway extends JsonLoader<CollectionEntity> {
     public JsonLoaderNiftyGateway(String source) {
         super(DEFAULT_PATH + source);
     }

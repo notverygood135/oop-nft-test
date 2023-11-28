@@ -1,5 +1,6 @@
 package datascraping.dataloader.collection;
 
+import datascraping.dataloader.DataLoader;
 import datascraping.model.CollectionEntity;
 
 import java.util.Collection;

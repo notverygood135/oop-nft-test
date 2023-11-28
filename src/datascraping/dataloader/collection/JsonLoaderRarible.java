@@ -4,7 +4,7 @@ import datascraping.model.Rarible;
 
 import static datascraping.utils.Commons.DEFAULT_PATH;
 
-public class JsonLoaderRarible extends JsonLoader {
+public class JsonLoaderRarible extends JsonLoader<CollectionEntity> {
 
     public JsonLoaderRarible(String source) {
         super(DEFAULT_PATH + source);

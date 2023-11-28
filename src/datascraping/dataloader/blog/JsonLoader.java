@@ -1,15 +1,12 @@
 package datascraping.dataloader.blog;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import datascraping.model.Blog;
-import datascraping.model.BlogEntity;
-import datascraping.model.CollectionEntity;
-import org.json.JSONArray;
+import datascraping.dataloader.FileLoader;
 
 import java.io.IOException;
 import java.util.*;
 
-public abstract class JsonLoader extends FileLoader {
+public abstract class JsonLoader<BlogEntity> extends FileLoader<BlogEntity> {
 
     public JsonLoader(String source) {
         super(source);
@@ -21,6 +18,7 @@ public abstract class JsonLoader extends FileLoader {
 
         try {
             List<Map<String, Object>> dataList = new ObjectMapper().readValue(file, ArrayList.class);
+
             for (Map<String, Object> data : dataList) {
                 String link = getStringAndRemove(data, "link");
                 String img = getStringAndRemove(data, "img");

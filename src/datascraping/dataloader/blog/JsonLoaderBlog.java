@@ -1,9 +1,7 @@
 package datascraping.dataloader.blog;
 
-import datascraping.model.Binance;
 import datascraping.model.Blog;
 import datascraping.model.BlogEntity;
-import datascraping.model.CollectionEntity;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,13 +10,15 @@ import java.util.List;
 
 import static datascraping.utils.Commons.DEFAULT_PATH;
 
-public class JsonLoaderBlog extends JsonLoader {
+public class JsonLoaderBlog extends JsonLoader<BlogEntity> {
     public JsonLoaderBlog(String path) {
         super(DEFAULT_PATH +path);
     }
 
     @Override
-    protected BlogEntity createSpecificEntity(String link, String img, String title, String content, String author, String date, List<String> tag) {
+    protected BlogEntity createSpecificEntity(
+            String link, String img, String title, String content, String author, String date, List<String> tag
+    ) {
         return new Blog(link, img, title, content, author, date, tag);
     }
 
