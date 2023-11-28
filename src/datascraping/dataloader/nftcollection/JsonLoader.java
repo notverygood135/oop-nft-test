@@ -1,4 +1,4 @@
-package datascraping.dataloader.collection;
+package datascraping.dataloader.nftcollection;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import datascraping.dataloader.FileLoader;
@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+
+import static datascraping.utils.LoaderHandlers.*;
 
 public abstract class JsonLoader<CollectionEntity> extends FileLoader<CollectionEntity> {
 
@@ -49,50 +51,4 @@ public abstract class JsonLoader<CollectionEntity> extends FileLoader<Collection
             String id, String name, String url, Double floorPrice, Double volume, Double volumeChange,
             Integer numOfSales, Integer numOwners, Integer totalSupply
     );
-
-    protected String getStringAndRemove(Map<String, Object> data, String key) {
-        String value = (String) data.get(key);
-        data.remove(key);
-        return value;
-    }
-
-    protected Double getDoubleAndRemove(Map<String, Object> data, String key) {
-        Object value = data.get(key);
-        data.remove(key);
-
-        if (value instanceof Double) {
-            return (Double) value;
-        } else if (value instanceof String) {
-            try {
-                return Double.parseDouble((String) value);
-            } catch (NumberFormatException e) {
-                // Xử lý nếu không thể chuyển đổi thành Double
-                // Ví dụ: có thể trả về giá trị mặc định hoặc thông báo lỗi
-                return 0.0; // Thay defaultValue bằng giá trị mặc định bạn muốn sử dụng
-            }
-        } else {
-            // Xử lý các trường hợp khác nếu cần
-            return 0.0; // Thay defaultValue bằng giá trị mặc định bạn muốn sử dụng
-        }
-    }
-
-    protected Integer getIntegerAndRemove(Map<String, Object> data, String key) {
-        Object value = data.get(key);
-        data.remove(key);
-
-        if (value instanceof Integer) {
-            return (Integer) value;
-        } else if (value instanceof String) {
-            try {
-                return Integer.parseInt((String) value);
-            } catch (NumberFormatException e) {
-                // Xử lý nếu không thể chuyển đổi thành Integer
-                // Ví dụ: có thể trả về giá trị mặc định hoặc thông báo lỗi
-                return 0; // Thay defaultValue bằng giá trị mặc định bạn muốn sử dụng
-            }
-        } else {
-            // Xử lý các trường hợp khác nếu cần
-            return 0; // Thay defaultValue bằng giá trị mặc định bạn muốn sử dụng
-        }
-    }
 }

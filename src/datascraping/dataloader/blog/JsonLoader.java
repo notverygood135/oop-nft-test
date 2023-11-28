@@ -4,7 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import datascraping.dataloader.FileLoader;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
+import static datascraping.utils.LoaderHandlers.getListAndRemove;
+import static datascraping.utils.LoaderHandlers.getStringAndRemove;
 
 public abstract class JsonLoader<BlogEntity> extends FileLoader<BlogEntity> {
 
@@ -45,17 +51,4 @@ public abstract class JsonLoader<BlogEntity> extends FileLoader<BlogEntity> {
     protected abstract BlogEntity createSpecificEntity(
             String link, String img, String title, String content, String author, String date, List<String> tag
     );
-
-    protected String getStringAndRemove(Map<String, Object> data, String key) {
-        String value = (String) data.get(key);
-        data.remove(key);
-        return value;
-    }
-
-    protected List<String> getListAndRemove(Map<String, Object> data, String key) {
-        String value = data.get(key).toString();
-        List<String> tags = Arrays.asList(value.substring(1, value.length() - 1).split(", "));
-        data.remove(key);
-        return tags;
-    }
 }

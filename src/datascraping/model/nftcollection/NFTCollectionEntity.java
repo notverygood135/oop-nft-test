@@ -1,12 +1,12 @@
-package datascraping.model;
+package datascraping.model.nftcollection;
 
-public abstract class CollectionEntity {
+public abstract class NFTCollectionEntity {
     private static int numEntity = 0;
    protected  String id,name,url;
     protected double floorPrice,volume,volumeChange;
     protected int numOfSales,numOwners,totalSupply;
 
-    public CollectionEntity(String id, String name, String url, double floorPrice, double volume, double volumeChange, int numOfSales, int numOwners, int totalSupply) {
+    public NFTCollectionEntity(String id, String name, String url, double floorPrice, double volume, double volumeChange, int numOfSales, int numOwners, int totalSupply) {
         this.numEntity++;
         this.id = id;
         this.name = name;
