@@ -2,7 +2,7 @@ package datascraping.model.nftcollection;
 
 public abstract class NFTCollectionEntity {
     private static int numEntity = 0;
-   protected  String id,name,url;
+    protected  String id,name,url;
     protected double floorPrice,volume,volumeChange;
     protected int numOfSales,numOwners,totalSupply;
 
