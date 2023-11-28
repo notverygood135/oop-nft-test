@@ -1,6 +1,8 @@
 package datascraping.model.nftcollection;
 
-public abstract class NFTCollectionEntity {
+import datascraping.model.Entity;
+
+public abstract class NFTCollectionEntity extends Entity {
     private static int numEntity = 0;
     protected  String id,name,url;
     protected double floorPrice,volume,volumeChange;
@@ -54,6 +56,8 @@ public abstract class NFTCollectionEntity {
     public int getTotalSupply() {
         return totalSupply;
     }
+
+    @Override
     public void printDetail(){
         System.out.println("Thuc the: \n"+"1,id: "+getId()+"\n2,name "+getName()+"\n 3,URL "+getUrl()+"\n4,Floor price: "
         +getFloorPrice()+"\n5,Volume: "+getVolume()+"\n6,Volume change: "+getVolumeChange()

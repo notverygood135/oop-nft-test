@@ -1,8 +1,10 @@
 package datascraping.model.twitter;
 
+import datascraping.model.Entity;
+
 import java.util.List;
 
-public class TwitterEntity {
+public class TwitterEntity extends Entity {
     protected String date, user, content;
     protected List<String> hashtags;
 
@@ -29,6 +31,7 @@ public class TwitterEntity {
         return hashtags;
     }
 
+    @Override
     public void printDetail(){
         System.out.println("user: " + user + ", hashtags: " + hashtags);
     }
