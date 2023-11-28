@@ -1,16 +1,12 @@
 package datascraping.dataloader.blog;
 
-import datascraping.dataloader.collection.JsonLoaderBinance;
-import datascraping.dataloader.collection.JsonLoaderNiftyGateway;
-import datascraping.dataloader.collection.JsonLoaderOpenSea;
-import datascraping.dataloader.collection.JsonLoaderRarible;
+import datascraping.dataloader.DataLoader;
 import datascraping.model.BlogEntity;
-import datascraping.model.CollectionEntity;
 
 import java.util.Collection;
 
 public class EntitiesGenerator {
-    private DataLoader[] loaders;
+    private DataLoader<BlogEntity>[] loaders;
     public EntitiesGenerator(){
         loaders = new DataLoader[]{
             new JsonLoaderBlog("nftplazas.json"),
@@ -19,7 +15,7 @@ public class EntitiesGenerator {
         };
     }
     public void generate(){
-        for(DataLoader dataLoader : loaders){
+        for(DataLoader<BlogEntity> dataLoader : loaders){
             int dem = 0;
             Collection<BlogEntity> test = dataLoader.load();
             String loaderClassName = dataLoader.getClass().getSimpleName();

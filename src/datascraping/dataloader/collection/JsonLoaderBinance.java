@@ -8,7 +8,7 @@ import java.util.Collection;
 
 import static datascraping.utils.Commons.DEFAULT_PATH;
 
-public class JsonLoaderBinance extends JsonLoader {
+public class JsonLoaderBinance extends JsonLoader<CollectionEntity> {
     public JsonLoaderBinance(String path) {
         super(DEFAULT_PATH +path);
     }
