@@ -4,7 +4,7 @@ import datascraping.model.Entity;
 
 import java.util.List;
 
-public class TwitterEntity extends Entity {
+public class TwitterEntity implements Entity {
     protected String date, user, content;
     protected List<String> hashtags;
 
