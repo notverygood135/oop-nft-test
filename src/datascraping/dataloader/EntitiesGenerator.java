@@ -41,8 +41,7 @@ public class EntitiesGenerator {
 
             for(Entity x : entities){
                 dem++;
-                System.out.println("Thuc the thu " + dem);
-                x.printDetail();
+
             }
             System.out.println("Thuc the: " + label + " co tong so luong la: " + dem);
         }
@@ -50,6 +49,11 @@ public class EntitiesGenerator {
     }
 
     public static void main(String[] args) {
-        new EntitiesGenerator().generate();
+        Map<String, Collection<Entity>> data =   new EntitiesGenerator().generate();
+        Collection<Entity> twit = data.get("NFTCollection");
+        // thay key NFTCollection bang Twitter hoac Blog de lay du lieu tuong ung
+        for(Entity e: twit){
+            e.printDetail();
+        }
     }
 }
