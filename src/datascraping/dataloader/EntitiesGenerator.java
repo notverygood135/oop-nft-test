@@ -7,6 +7,8 @@ import datascraping.model.Entity;
 import datascraping.model.twitter.TwitterEntity;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class EntitiesGenerator {
     private DataLoader[] loaders;
@@ -27,20 +29,24 @@ public class EntitiesGenerator {
             new JsonLoaderBlog("cointelegraph.json")
         };
     }
-    public void generate(){
+    public Map<String, Collection<Entity>> generate(){
+        Map<String, Collection<Entity>> data = new HashMap<>();
+
         for(DataLoader dataLoader : loaders){
             int dem = 0;
-            Collection<Entity> test = dataLoader.load();
+            Collection<Entity> entities = dataLoader.load();
             String loaderClassName = dataLoader.getClass().getSimpleName();
-            String label = loaderClassName.substring(0, loaderClassName.indexOf("Json"));
+            String label = loaderClassName.substring(10);
+            data.put(label, entities);
 
-            for(Entity x : test){
+            for(Entity x : entities){
                 dem++;
                 System.out.println("Thuc the thu " + dem);
                 x.printDetail();
             }
-            System.out.println("Thuc the: " + label + "co tong so luong la: " + dem);
+            System.out.println("Thuc the: " + label + " co tong so luong la: " + dem);
         }
+        return data;
     }
 
     public static void main(String[] args) {
