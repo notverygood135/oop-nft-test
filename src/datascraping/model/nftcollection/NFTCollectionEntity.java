@@ -2,7 +2,7 @@ package datascraping.model.nftcollection;
 
 import datascraping.model.Entity;
 
-public abstract class NFTCollectionEntity extends Entity {
+public abstract class NFTCollectionEntity implements Entity {
     private static int numEntity = 0;
     protected  String id,name,url;
     protected double floorPrice,volume,volumeChange;

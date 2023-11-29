@@ -4,7 +4,7 @@ import datascraping.model.Entity;
 
 import java.util.List;
 
-public abstract class BlogEntity extends Entity {
+public abstract class BlogEntity implements Entity {
     private static int numEntity = 0;
     protected String link, img, title, content, author, date;
     protected List<String> tag;
