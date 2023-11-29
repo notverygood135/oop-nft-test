@@ -16,7 +16,6 @@ public class EntitiesGenerator {
         loaders = new DataLoader[]{
             new JsonLoaderTwitter("twitter.json"),
             new JsonLoaderNFTCollection("binance1d.json"),
-            new JsonLoaderNFTCollection("binance1d.json"),
             new JsonLoaderNFTCollection("binance7d.json"),
             new JsonLoaderNFTCollection("opensea1d.json"),
             new JsonLoaderNFTCollection("opensea7d.json"),
