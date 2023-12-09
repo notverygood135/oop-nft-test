@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
@@ -37,7 +38,7 @@
       </Pane>
       <Text layoutX="97.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 26;" text="Collection stats" />
       <Button layoutX="588.0" layoutY="142.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: gray;" text="View All" />
-      <SplitMenuButton layoutX="553.0" layoutY="240.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="75.0" text="ALL" AnchorPane.rightAnchor="1292.0">
+      <SplitMenuButton layoutX="553.0" layoutY="240.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="75.0" text="ALL" AnchorPane.rightAnchor="1300.0">
          <items>
             <MenuItem mnemonicParsing="false" text="1h" />
             <MenuItem mnemonicParsing="false" text="24h" />
@@ -143,24 +144,29 @@
       </MenuBar>
       <SplitMenuButton layoutX="316.0" layoutY="240.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="117.0" text="All categories">
          <items>
-            <MenuItem mnemonicParsing="false" text="1h" />
-            <MenuItem mnemonicParsing="false" text="24h" />
-            <MenuItem mnemonicParsing="false" text="7d" />
-            <MenuItem mnemonicParsing="false" text="30d" />
-            <MenuItem mnemonicParsing="false" text="ALL" />
+            <MenuItem mnemonicParsing="false" text="Art" />
+            <MenuItem mnemonicParsing="false" text="Gaming" />
+            <MenuItem mnemonicParsing="false" text="Memberships" />
+            <MenuItem mnemonicParsing="false" text="PFPs" />
+            <MenuItem mnemonicParsing="false" text="Photography" />
+            <MenuItem mnemonicParsing="false" text="Domain Names" />
+            <MenuItem mnemonicParsing="false" text="Music" />
+            <MenuItem mnemonicParsing="false" text="Sports Collectibles" />
+            <MenuItem mnemonicParsing="false" text="Virtual Worlds" />
          </items>
       </SplitMenuButton>
       <SplitMenuButton layoutX="100.0" layoutY="240.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="117.0" text="All chains" AnchorPane.leftAnchor="100.0">
          <items>
-            <MenuItem mnemonicParsing="false" text="1h" />
-            <MenuItem mnemonicParsing="false" text="24h" />
-            <MenuItem mnemonicParsing="false" text="7d" />
-            <MenuItem mnemonicParsing="false" text="30d" />
-            <MenuItem mnemonicParsing="false" text="ALL" />
+            <MenuItem mnemonicParsing="false" text="BNB" />
+            <MenuItem mnemonicParsing="false" text="Base" />
+            <MenuItem mnemonicParsing="false" text="Ethereum" />
+            <MenuItem mnemonicParsing="false" text="Zora" />
+            <MenuItem mnemonicParsing="false" text="..." />
          </items>
       </SplitMenuButton>
       <Button layoutX="100.0" layoutY="142.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: gray;" text="Trending" AnchorPane.leftAnchor="100.0" />
       <Button layoutX="253.0" layoutY="142.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: gray;" text="Top" />
       <Button layoutX="414.0" layoutY="142.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: gray;" text="View list" />
+      <Icon content="SEARCH" layoutX="1388.0" layoutY="14.0" prefHeight="17.0" prefWidth="21.0" AnchorPane.leftAnchor="1380.0" />
    </children>
 </AnchorPane>
