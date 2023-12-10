@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
@@ -14,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #CCCCCC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #CCCCCC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MS3Controller">
    <children>
       <Pane fx:id="TopPanel" prefHeight="45.0" prefWidth="600.0" style="-fx-background-color: black;">
          <children>
@@ -39,7 +38,7 @@
             <ImageView fitHeight="45.0" fitWidth="117.0" layoutX="72.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
-      <Button layoutX="580.0" layoutY="104.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="60.0" style="-fx-background-color: gray;" text="NFT" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <Button layoutX="580.0" layoutY="104.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="0.0" prefWidth="60.0" style="-fx-background-color: gray;" text="NFT" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
       <Button layoutX="1543.0" layoutY="145.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="60.0" style="-fx-background-color: gray;" text="Search" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="10.0" />
       <TextField layoutX="581.0" layoutY="145.0" style="-fx-background-color: gray;" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="10.0" />
       <MenuBar fx:id="menuBar11" accessibleRole="IMAGE_VIEW" layoutX="574.0" layoutY="61.0" style="-fx-background-color: gray;" AnchorPane.leftAnchor="575.0" AnchorPane.topAnchor="10.0">
@@ -66,7 +65,7 @@
             <Insets />
          </opaqueInsets>
       </MenuBar>
-      <ImageView fitHeight="334.0" fitWidth="1920.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
+      <ImageView fitHeight="334.0" fitWidth="1920.0" layoutY="79.0" onDragDetected="#switchToScene1" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
       <Pane layoutX="132.0" layoutY="505.0" prefHeight="200.0" prefWidth="359.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="500.0">
          <children>
             <ImageView fitHeight="132.0" fitWidth="200.0" layoutX="14.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
@@ -183,6 +182,5 @@
       <Button layoutX="915.0" layoutY="415.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="60.0" style="-fx-background-color: gray;" text="Search" />
       <Text layoutX="1638.0" layoutY="1046.0" strokeType="OUTSIDE" strokeWidth="0.0" text="More result" wrappingWidth="110.84375" />
       <Text layoutX="184.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search 's result" wrappingWidth="110.84375" />
-      <Icon content="SEARCH" layoutX="1389.0" layoutY="14.0" prefHeight="17.0" prefWidth="16.0" AnchorPane.leftAnchor="1380.0" />
    </children>
 </AnchorPane>
