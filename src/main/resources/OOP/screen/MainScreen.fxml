@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OOP.FE.controller.MainScreenController">
+   <children>
+      <AnchorPane prefHeight="99.0" prefWidth="712.0" style="-fx-background-color: FFAAAA;">
+         <children>
+            <FlowPane fx:id="flowPane" hgap="13.0" layoutX="168.0" layoutY="63.0" prefHeight="22.0" prefWidth="563.0">
+               <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                  <Text text="#lol" />
+               </StackPane>
+
+               <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                  <Text text="#PHP" />
+               </StackPane>
+
+               <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                  <Text text="#CSS" />
+               </StackPane>
+
+               <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                  <Text text="#Kotlin" />
+               </StackPane>
+
+               <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                  <Text text="#C++" />
+               </StackPane>
+
+            </FlowPane>
+            <ImageView fitHeight="64.0" fitWidth="131.0" layoutX="14.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/appimage.jpg" />
+               </image></ImageView>
+            <VBox fx:id="searchContainer" layoutX="162.0" layoutY="14.0" prefHeight="26.0" prefWidth="353.0" style="-fx-background-color: white;-fx-background-radius: 15;">
+               <children>
+                  <TextField fx:id="searchField" onKeyReleased="#search" />
+                  <ListView fx:id="resultList" prefHeight="135.0" prefWidth="353.0" />
+               </children></VBox>
+            <Button layoutX="635.0" layoutY="35.0" mnemonicParsing="false" onAction="#goToBlog" style="-fx-background-color: Black; -fx-background-radius: 15;" text="NFT" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="201.0" layoutX="14.0" layoutY="170.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="216.0" />
+      <Text layoutX="44.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;View Twitter NFT posts&gt; " />
+      <Text layoutX="28.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to &lt;app name&gt;">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="28.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What do you want to do? " />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="201.0" layoutX="501.0" layoutY="170.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="216.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="201.0" layoutX="258.0" layoutY="171.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="216.0" />
+      <Text layoutX="263.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;View other NFT blogs and posts&gt; " />
+      <Text layoutX="510.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;View your NFT list of favorites posts&gt; " wrappingWidth="197.7672119140625" />
+      <Text layoutX="14.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="More popular contents:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="25.0" layoutY="542.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Most popular hashtags ">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="25.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About trending, price, volumes">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <StackPane layoutX="21.0" layoutY="428.0" prefHeight="27.0" prefWidth="69.0">
+         <children>
+            <Hyperlink fx:id="twitterLink" onAction="#handleTwitterLinkClick" text="Twitter">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </StackPane>
+      <StackPane layoutX="21.0" layoutY="473.0" prefHeight="33.0" prefWidth="106.0">
+         <children>
+            <Hyperlink fx:id="blogLink" onAction="#handleBlogClick" prefHeight="33.0" prefWidth="129.0" text="Other blogs">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
