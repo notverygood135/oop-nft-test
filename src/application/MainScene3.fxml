@@ -1,76 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #CCCCCC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MS3Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MS3Controller">
    <children>
-      <Pane fx:id="TopPanel" prefHeight="45.0" prefWidth="600.0" style="-fx-background-color: black;">
-         <children>
-            <MenuBar fx:id="menuBar" accessibleRole="IMAGE_VIEW" layoutX="93.0" layoutY="10.0" style="-fx-background-color: gray;">
-               <menus>
-                  <Menu mnemonicParsing="false" text="Stat">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Close" />
-                     </items>
-                  </Menu>
-               </menus>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </MenuBar>
-            <Button layoutX="468.0" layoutY="11.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="60.0" style="-fx-background-color: gray;" text="Search" />
-            <TextField layoutX="317.0" layoutY="11.0" style="-fx-background-color: gray;" />
-         </children>
-      </Pane>
-      <Pane fx:id="TopPanel1" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="600.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <ImageView fitHeight="45.0" fitWidth="117.0" layoutX="72.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
-         </children>
-      </Pane>
       <Button layoutX="580.0" layoutY="104.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="0.0" prefWidth="60.0" style="-fx-background-color: gray;" text="NFT" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-      <Button layoutX="1543.0" layoutY="145.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="60.0" style="-fx-background-color: gray;" text="Search" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="10.0" />
-      <TextField layoutX="581.0" layoutY="145.0" style="-fx-background-color: gray;" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="10.0" />
-      <MenuBar fx:id="menuBar11" accessibleRole="IMAGE_VIEW" layoutX="574.0" layoutY="61.0" style="-fx-background-color: gray;" AnchorPane.leftAnchor="575.0" AnchorPane.topAnchor="10.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="Stat">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Close" />
-               </items>
-            </Menu>
-         </menus>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </MenuBar>
-      <MenuBar fx:id="menuBar1" accessibleRole="IMAGE_VIEW" layoutX="939.0" layoutY="142.0" style="-fx-background-color: gray;" AnchorPane.leftAnchor="945.0" AnchorPane.topAnchor="10.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="Sell">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Close" />
-               </items>
-            </Menu>
-         </menus>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </MenuBar>
-      <Text layoutX="43.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Result for" wrappingWidth="142.13671875" AnchorPane.leftAnchor="100.0">
+      <Text layoutX="100.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Result for" wrappingWidth="142.13671875" AnchorPane.leftAnchor="100.0">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Pane layoutX="54.0" layoutY="161.0" prefHeight="200.0" prefWidth="1596.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="200.0">
+      <Pane layoutX="54.0" layoutY="161.0" prefHeight="200.0" prefWidth="1596.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="200.0">
          <children>
             <ImageView fitHeight="117.0" fitWidth="332.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
             <Text layoutX="24.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Describe............................................................................................................................................................................................................................................" wrappingWidth="775.080078125" />
@@ -79,7 +27,7 @@
             <Text layoutX="1403.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="101.6171875" />
          </children>
       </Pane>
-      <Pane layoutX="64.0" layoutY="171.0" prefHeight="200.0" prefWidth="1596.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="350.0">
+      <Pane layoutX="64.0" layoutY="171.0" prefHeight="200.0" prefWidth="1596.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="400.0">
          <children>
             <ImageView fitHeight="117.0" fitWidth="332.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
             <Text layoutX="24.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Describe............................................................................................................................................................................................................................................" wrappingWidth="775.080078125" />
@@ -88,7 +36,7 @@
             <Text layoutX="1403.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="101.6171875" />
          </children>
       </Pane>
-      <Pane layoutX="64.0" layoutY="171.0" prefHeight="200.0" prefWidth="1596.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="550.0">
+      <Pane layoutX="64.0" layoutY="171.0" prefHeight="200.0" prefWidth="1596.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="600.0">
          <children>
             <ImageView fitHeight="117.0" fitWidth="332.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
             <Text layoutX="24.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Describe............................................................................................................................................................................................................................................" wrappingWidth="775.080078125" />
@@ -97,7 +45,7 @@
             <Text layoutX="1403.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="101.6171875" />
          </children>
       </Pane>
-      <Pane layoutX="74.0" layoutY="181.0" prefHeight="200.0" prefWidth="1596.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="750.0">
+      <Pane layoutX="74.0" layoutY="181.0" prefHeight="200.0" prefWidth="1596.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="800.0">
          <children>
             <ImageView fitHeight="117.0" fitWidth="332.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
             <Text layoutX="24.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Describe............................................................................................................................................................................................................................................" wrappingWidth="775.080078125" />
@@ -121,5 +69,34 @@
             <MenuItem mnemonicParsing="false" text="Recently received" />
          </items>
       </SplitMenuButton>
+      <AnchorPane layoutX="60.0" layoutY="131.0" prefHeight="98.0" prefWidth="731.0" style="-fx-background-color: FFAAAA;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="37.0" layoutX="165.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 100; -fx-arc-width: 15;" width="353.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="30.0" />
+            <Text layoutX="1356.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" AnchorPane.rightAnchor="522.861328125" AnchorPane.topAnchor="39.892578125">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="64.0" layoutX="14.0" layoutY="17.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="131.0" />
+            <Text layoutX="27.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Application's logo" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="37.0" layoutX="327.0" layoutY="26.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 20; -fx-arc-width: 20;" width="85.0" AnchorPane.topAnchor="30.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="37.0" layoutX="622.0" layoutY="31.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 20; -fx-arc-width: 20;" width="85.0" AnchorPane.topAnchor="30.0" />
+            <Text fill="WHITE" layoutX="649.0" layoutY="55.0" onMouseDragEntered="#switchToScene1" strokeType="OUTSIDE" strokeWidth="0.0" text="SELL">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="350.0" layoutY="53.0" onMouseDragEntered="#switchToScene1" strokeType="OUTSIDE" strokeWidth="0.0" text="STAT" AnchorPane.topAnchor="35.0">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Text>
+            <Button layoutX="1719.0" layoutY="58.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: #000000; -fx-background-radius: 10;" text="NFT" textFill="WHITE" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="30.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
