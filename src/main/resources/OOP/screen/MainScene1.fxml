@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.AutoCompleteTextField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -134,24 +139,61 @@
       <Button layoutX="263.0" layoutY="180.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: gray;" text="View list" AnchorPane.leftAnchor="263.0" AnchorPane.topAnchor="180.0" />
       <AnchorPane layoutX="40.0" layoutY="111.0" prefHeight="98.0" prefWidth="731.0" style="-fx-background-color: FFAAAA;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="39.0" layoutX="249.0" layoutY="28.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 100; -fx-arc-width: 15;" width="237.0" AnchorPane.rightAnchor="158.0" AnchorPane.topAnchor="25.0" />
-            <Text layoutX="439.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" AnchorPane.rightAnchor="235.8466796875" AnchorPane.topAnchor="32.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="64.0" layoutX="14.0" layoutY="17.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="131.0" AnchorPane.topAnchor="17.0" />
-            <Text layoutX="27.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Application's logo" />
-            <Button layoutX="188.0" layoutY="30.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: #000000; -fx-background-radius: 10;" text="STAT" textFill="WHITE" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="25.0">
+            <Button layoutX="508.0" layoutY="31.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: #000000; -fx-background-radius: 10;" text="STAT" textFill="WHITE" AnchorPane.leftAnchor="508.0" AnchorPane.topAnchor="31.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="614.0" layoutY="25.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: #000000; -fx-background-radius: 10;" text="NFT" textFill="WHITE" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="25.0">
+            <Button layoutX="624.0" layoutY="33.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: #000000; -fx-background-radius: 10;" text="NFT" textFill="WHITE" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="33.0">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
+            <ImageView fitHeight="100.0" fitWidth="120.0" layoutX="27.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../image/LogoOOP.png" />
+               </image>
+            </ImageView>
+            <FlowPane fx:id="flowPane" hgap="13.0" layoutX="126.0" layoutY="64.0" prefHeight="22.0" prefWidth="563.0">
+               <children>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#lol" />
+                     </children>
+                  </StackPane>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#PHP" />
+                     </children>
+                  </StackPane>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#CSS" />
+                     </children>
+                  </StackPane>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#Kotlin" />
+                     </children>
+                  </StackPane>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#C++" />
+                     </children>
+                  </StackPane>
+               </children>
+            </FlowPane>
+            <Button layoutX="414.0" layoutY="23.0" mnemonicParsing="false" onAction="#switchToScene3" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: #000000;" text="Search" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <AutoCompleteTextField layoutX="126.0" layoutY="26.0" prefHeight="25.0" prefWidth="281.0" />
          </children>
       </AnchorPane>
       <SplitMenuButton layoutX="344.0" layoutY="250.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="75.0" text="All">
