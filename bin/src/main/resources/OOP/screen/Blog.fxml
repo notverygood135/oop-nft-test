@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.Icon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OOP.FE.controller.BlogController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cad8e9" height="26.0" layoutX="30.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="139.0" />
+      <ScrollBar layoutX="717.0" layoutY="107.0" orientation="VERTICAL" prefHeight="530.0" prefWidth="12.0" />
+      <Text layoutX="62.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return to blog list " />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cad8e9" height="451.0" layoutX="30.0" layoutY="181.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="638.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="412.0" layoutX="41.0" layoutY="194.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="196.0" />
+      <Text layoutX="101.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cover image" />
+      <Text layoutX="266.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" />
+      <Icon content="ARROW_BACK" layoutX="29.0" layoutY="120.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d9d9d9" height="126.0" layoutX="275.0" layoutY="487.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 0; -fx-arc-width: 0;" width="361.0" />
+      <Text layoutX="314.0" layoutY="546.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diagram of trend / price / volume (if any, or this part won’texist at all if the blog only has text)" wrappingWidth="283.2523498535156" />
+      <Text layoutX="266.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Blog source:" />
+      <Text layoutX="266.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Published date" />
+      <Text layoutX="266.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Overview" />
+      <AnchorPane prefHeight="99.0" prefWidth="712.0" style="-fx-background-color: FFAAAA;">
+         <children>
+            <FlowPane fx:id="flowPane" hgap="13.0" layoutX="168.0" layoutY="63.0" prefHeight="22.0" prefWidth="563.0">
+               <children>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#lol" />
+                     </children>
+                  </StackPane>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#PHP" />
+                     </children>
+                  </StackPane>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#CSS" />
+                     </children>
+                  </StackPane>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#Kotlin" />
+                     </children>
+                  </StackPane>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#C++" />
+                     </children>
+                  </StackPane>
+               </children>
+            </FlowPane>
+            <ImageView fitHeight="64.0" fitWidth="131.0" layoutX="14.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/appimage.jpg" />
+               </image>
+            </ImageView>
+            <VBox fx:id="searchContainer" layoutX="162.0" layoutY="14.0" prefHeight="26.0" prefWidth="353.0" style="-fx-background-color: white;-fx-background-radius: 15;">
+               <children>
+                  <TextField fx:id="searchField" onKeyReleased="#search" />
+                  <ListView fx:id="resultList" prefHeight="135.0" prefWidth="353.0" />
+               </children>
+            </VBox>
+            <Button layoutX="635.0" layoutY="35.0" mnemonicParsing="false" onAction="#goToBlog" style="-fx-background-color: Black; -fx-background-radius: 15;" text="NFT" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
