@@ -88,14 +88,14 @@
          </columns>
       </TableView>
       <Button layoutX="546.0" layoutY="182.0" mnemonicParsing="false" onAction="#changeDetailScene" prefHeight="30.0" prefWidth="112.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Detail Collection" textFill="WHITE" />
-      <HBox layoutX="45.0" layoutY="231.0" prefHeight="35.0" prefWidth="173.0">
+      <HBox layoutX="45.0" layoutY="231.0" prefHeight="35.0" prefWidth="211.0">
          <children>
             <Button mnemonicParsing="false" onAction="#setTable1day" prefHeight="35.0" prefWidth="54.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="1 day">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#setTable7day" prefHeight="35.0" prefWidth="54.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="7 days">
+            <Button mnemonicParsing="false" onAction="#setTable7day" prefHeight="35.0" prefWidth="64.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="7 days">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
