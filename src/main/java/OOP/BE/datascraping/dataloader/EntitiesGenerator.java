@@ -28,6 +28,7 @@ public class EntitiesGenerator {
             new JsonLoaderBlog("cointelegraph.json")
         };
     }
+
     public Map<String, Collection<Entity>> generate(){
         Map<String, Collection<Entity>> data = new HashMap<>();
 
@@ -40,7 +41,6 @@ public class EntitiesGenerator {
 
             for(Entity x : entities){
                 dem++;
-
             }
             System.out.println("Thuc the: " + label + " co tong so luong la: " + dem);
         }

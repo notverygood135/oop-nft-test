@@ -3,13 +3,13 @@ package OOP.BE.datascraping.model.nftcollection;
 import OOP.BE.datascraping.model.Entity;
 
 public abstract class NFTCollectionEntity implements Entity {
-    private static int numEntity = 0;
-    protected  String id,name,url;
-    protected double floorPrice,volume,volumeChange;
-    protected int numOfSales,numOwners,totalSupply;
+   // private static int numEntity = 0;
+        String id,name,url;
+    double floorPrice,volume,volumeChange;
+     int numOfSales,numOwners,totalSupply;
 
     public NFTCollectionEntity(String id, String name, String url, double floorPrice, double volume, double volumeChange, int numOfSales, int numOwners, int totalSupply) {
-        this.numEntity++;
+      //  numEntity++;
         this.id = id;
         this.name = name;
         this.url = url;

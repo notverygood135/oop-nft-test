@@ -21,5 +21,6 @@ module OOP {
 
     opens OOP to javafx.fxml;
     opens OOP.FE.controller to javafx.fxml;
+    opens OOP.BE.datascraping.model.nftcollection to javafx.base;
     exports OOP;
 }
