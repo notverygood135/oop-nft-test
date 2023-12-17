@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.Map;
 import java.util.ResourceBundle;
-
 import OOP.BE.datascraping.dataloader.EntitiesGenerator;
 import OOP.BE.datascraping.dataloader.NFTGenerator;
 import OOP.BE.datascraping.model.Entity;
@@ -60,7 +59,10 @@ public class NFT_MainScene implements Initializable {
     private Text dayStatus;
     @FXML
     private Text webStatus;
-
+    @FXML
+    private TextField fromPrice;
+    @FXML
+    private TextField toPrice;
 
     ObservableList<NFTCollection> list = FXCollections.observableArrayList();
 
@@ -149,7 +151,7 @@ public class NFT_MainScene implements Initializable {
     }
 
     void setSearchText() {
-        tableView.setItems(list);
+//        tableView.setItems(list);
 
         FilteredList<NFTCollection> filteredList = new FilteredList<>(list, b -> true);
         searchText.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -169,27 +171,44 @@ public class NFT_MainScene implements Initializable {
                 }
             });
         });
-
         SortedList<NFTCollection> sortedList = new SortedList<>(filteredList);
-
         sortedList.comparatorProperty().bind(tableView.comparatorProperty());
-
         tableView.setItems(sortedList);
+    }
+
+
+    @FXML
+    private void setPriceSearch(ActionEvent e) {
+        // Lấy giá trị từ TextField
+        double from = Double.parseDouble(fromPrice.getText());
+        double to = Double.parseDouble(toPrice.getText());
+
+        // Tạo một FilteredList để lọc dữ liệu dựa trên khoảng giá
+        FilteredList<NFTCollection> priceFilteredList = new FilteredList<>(list);
+        priceFilteredList.setPredicate(nftCollection ->
+                nftCollection.getFloorPrice() >= from && nftCollection.getFloorPrice() <= to);
+
+        // Tạo một SortedList từ FilteredList
+        SortedList<NFTCollection> sortedPriceList = new SortedList<>(priceFilteredList);
+        sortedPriceList.comparatorProperty().bind(tableView.comparatorProperty());
+
+        // Đặt dữ liệu lọc vào TableView
+        tableView.setItems(sortedPriceList);
     }
 
 
     public void changeDetailScene(ActionEvent e) throws IOException {
         NFTCollection selectedItem = tableView.getSelectionModel().getSelectedItem();
 
-        if (selectedItem == null) {
-            // Nếu không có item nào được chọn, hiển thị dialog thông báo
+        if (selectedItem == null || selectedItem.equals(null)) {
+            // Hiển thị thông báo cho người dùng về việc chưa chọn mục
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Thông báo");
             alert.setHeaderText(null);
             alert.setContentText("Vui lòng chọn một mục!");
             alert.showAndWait();
         } else {
-            // Nếu có item được chọn, tiến hành mở cửa sổ chi tiết
+            // Mở cửa sổ chi tiết
             Stage detailStage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/NFTDetailScene.fxml"));
             Parent root = loader.load();

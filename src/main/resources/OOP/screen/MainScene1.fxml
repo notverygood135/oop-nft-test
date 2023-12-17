@@ -3,6 +3,7 @@
 <?import com.gluonhq.charm.glisten.control.AutoCompleteTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -78,7 +79,7 @@
             <AutoCompleteTextField layoutX="126.0" layoutY="26.0" prefHeight="25.0" prefWidth="281.0" />
          </children>
       </AnchorPane>
-      <TableView fx:id="tableView" layoutX="45.0" layoutY="282.0" prefHeight="345.0" prefWidth="648.0">
+      <TableView fx:id="tableView" layoutX="45.0" layoutY="319.0" prefHeight="308.0" prefWidth="663.0">
          <columns>
             <TableColumn fx:id="TblVwColCollection" prefWidth="235.0" text="Collection" />
             <TableColumn fx:id="TblVwColVolume" prefWidth="127.0" text="Volume" />
@@ -87,27 +88,27 @@
             <TableColumn fx:id="TblVwColChange" prefWidth="75.0" text="\% Change" />
          </columns>
       </TableView>
-      <Button layoutX="546.0" layoutY="182.0" mnemonicParsing="false" onAction="#changeDetailScene" prefHeight="30.0" prefWidth="112.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Detail Collection" textFill="WHITE" />
-      <HBox layoutX="45.0" layoutY="231.0" prefHeight="35.0" prefWidth="211.0">
+      <Button layoutX="596.0" layoutY="278.0" mnemonicParsing="false" onAction="#changeDetailScene" prefHeight="30.0" prefWidth="112.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Detail Collection" textFill="WHITE" />
+      <HBox layoutX="52.0" layoutY="276.0" prefHeight="35.0" prefWidth="180.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#setTable1day" prefHeight="35.0" prefWidth="54.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="1 day">
+            <Button mnemonicParsing="false" onAction="#setTable1day" prefHeight="35.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="1 day">
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets right="5.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#setTable7day" prefHeight="35.0" prefWidth="64.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="7 days">
+            <Button mnemonicParsing="false" onAction="#setTable7day" prefHeight="35.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="7 days">
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets right="5.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#setTableAllDay" prefHeight="35.0" prefWidth="54.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="All">
+            <Button mnemonicParsing="false" onAction="#setTableAllDay" prefHeight="35.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="All">
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets right="5.0" />
                </HBox.margin>
             </Button>
          </children>
       </HBox>
-      <HBox layoutX="398.0" layoutY="239.0" prefHeight="35.0" prefWidth="296.0">
+      <HBox layoutX="277.0" layoutY="276.0" prefHeight="35.0" prefWidth="296.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search Collection" wrappingWidth="123.98307228088379">
                <font>
@@ -120,27 +121,57 @@
             <TextField fx:id="searchText" prefHeight="26.0" prefWidth="178.0" promptText="Name of Collection" />
          </children>
       </HBox>
-      <HBox layoutX="45.0" layoutY="180.0" prefHeight="35.0" prefWidth="319.0">
+      <HBox layoutX="52.0" layoutY="202.0" prefHeight="35.0" prefWidth="296.0">
          <children>
             <Button mnemonicParsing="false" onAction="#setTableBinance" prefHeight="35.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="Binance">
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets right="5.0" />
                </HBox.margin>
             </Button>
             <Button mnemonicParsing="false" onAction="#setTableOpensea" prefHeight="35.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="Opensea">
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets right="5.0" />
                </HBox.margin>
             </Button>
             <Button mnemonicParsing="false" onAction="#setTableRarible" prefHeight="35.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="Rarible">
                <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button layoutX="138.0" layoutY="10.0" mnemonicParsing="false" onAction="#setTableNiftygateway" prefHeight="35.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="Niftygateway">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin></Button>
+         </children>
+      </HBox>
+      <HBox layoutX="412.0" layoutY="199.0" prefHeight="41.0" prefWidth="296.0">
+         <children>
+            <Label prefHeight="31.0" prefWidth="84.0" text="Price Search:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="fromPrice" prefWidth="50.0" promptText="From">
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+            </TextField>
+            <TextField fx:id="toPrice" prefHeight="26.0" prefWidth="50.0" promptText="To">
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+            </TextField>
+            <Button mnemonicParsing="false" onAction="#setPriceSearch" style="-fx-background-color: black; -fx-background-radius: 20;" text="Button" textFill="WHITE">
+               <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </Button>
-            <Button layoutX="138.0" layoutY="10.0" mnemonicParsing="false" onAction="#setTableNiftygateway" prefHeight="35.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="Niftygateway" />
          </children>
       </HBox>
-      <Text fx:id="webStatus" layoutX="382.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All" />
-      <Text fx:id="dayStatus" layoutX="263.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All" />
+      <Text fx:id="webStatus" layoutX="52.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All" />
+      <Text fx:id="dayStatus" layoutX="52.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All" />
    </children>
 </AnchorPane>
