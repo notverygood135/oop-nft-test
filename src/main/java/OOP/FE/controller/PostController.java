@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -166,7 +167,7 @@ public class PostController implements Initializable {
 
     private EventHandler<MouseEvent> createTagClickHandler(StackPane tagPane) {
         return event -> {
-            Text textNode = (Text) tagPane.getChildren().getFirst();
+            Text textNode = (Text) tagPane.getChildren().get(0);
             String tagText = textNode.getText();
 
             // Update current tags and refresh the FlowPane
@@ -246,8 +247,24 @@ public class PostController implements Initializable {
     @FXML
     private void goToBlog(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/Blog.fxml"));
-        Scene scene = new Scene(loader.load(), 800, 700);
+        Scene scene = new Scene(loader.load(), 731, 657);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
     }
+    
+    @FXML
+    public void switchToMainScreen(ActionEvent event) throws IOException{
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/MainScreen.fxml"));
+    	Scene scene = new Scene(loader.load(), 731, 657);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+	}
+
+    @FXML
+    public void switchToBlog(ActionEvent event) throws IOException{
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/Blog.fxml"));
+    	Scene scene = new Scene(loader.load(), 731, 657);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+	}
 }

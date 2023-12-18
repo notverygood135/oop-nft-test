@@ -89,7 +89,7 @@
                   <ListView fx:id="resultList" prefHeight="135.0" prefWidth="353.0" />
                </children>
             </VBox>
-            <Button layoutX="635.0" layoutY="35.0" mnemonicParsing="false" onAction="#goToBlog" style="-fx-background-color: Black; -fx-background-radius: 15;" text="NFT" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="635.0" layoutY="35.0" mnemonicParsing="false" onAction="#switchToMainScreen" style="-fx-background-color: Black; -fx-background-radius: 15;" text="NFT" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>

@@ -204,6 +204,32 @@ public class MainScreenController implements Initializable{
             e.printStackTrace();
         }
     }
+    
+    //NFT button
+    public void switchToMainScreen(ActionEvent event) throws IOException{
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/MainScreen.fxml"));
+    	Scene scene = new Scene(loader.load(), 731, 657);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+	}
+    
+    //pressing post button
+    @FXML
+    public void switchToPost(ActionEvent event) throws IOException{
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/Post.fxml"));
+    	Scene scene = new Scene(loader.load(), 731, 657);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+	}
+    
+  //pressing favorite
+    @FXML
+    public void switchToFavorites(ActionEvent event) throws IOException{
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/Favorites.fxml"));
+    	Scene scene = new Scene(loader.load(), 731, 657);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+	}
 }
 
 

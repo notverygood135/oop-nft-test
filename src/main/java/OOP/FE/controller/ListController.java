@@ -84,12 +84,12 @@ public class ListController implements Initializable {
 
     // Go to NFT when click NFT Button
     @FXML
-    private void goToBlog(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/Blog.fxml")); // Khong co link fxml nen dung tam
-        Scene scene = new Scene(loader.load(), 800, 700); // Adjust the size as needed
+    public void switchToMainScreen(ActionEvent event) throws IOException{
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/MainScreen.fxml"));
+    	Scene scene = new Scene(loader.load(), 731, 657);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
-    }
+	}
 
     // Tagging Systems
     @Override
