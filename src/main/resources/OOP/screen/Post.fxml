@@ -50,9 +50,9 @@
                      </children>
                   </FlowPane>
                </children></FlowPane>
-            <ImageView fitHeight="64.0" fitWidth="131.0" layoutX="14.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="99.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../image/appimage.jpg" />
+                  <Image url="@../image/LogoOOP.png" />
                </image>
             </ImageView>
             <Button layoutX="635.0" layoutY="35.0" mnemonicParsing="false" onAction="#switchToMainScreen" style="-fx-background-color: Black; -fx-background-radius: 15;" text="NFT" textAlignment="CENTER" textFill="WHITE">
@@ -68,7 +68,7 @@
          </children>
       </AnchorPane>
       <ListView fx:id="postListView" layoutX="8.0" layoutY="172.0" prefHeight="472.0" prefWidth="714.0" />
-      <SplitMenuButton layoutX="27.0" layoutY="129.0" mnemonicParsing="false" text="Sort by:">
+      <SplitMenuButton layoutX="24.0" layoutY="119.0" mnemonicParsing="false" text="Sort by:">
         <items>
           <MenuItem mnemonicParsing="false" text="Name: A to Z" />
           <MenuItem mnemonicParsing="false" text="Name: Z to A" />
@@ -77,14 +77,20 @@
             <MenuItem mnemonicParsing="false" text="Most Viewed" />
             <MenuItem mnemonicParsing="false" text="Best Ratings" />
         </items>
+         <font>
+            <Font size="14.0" />
+         </font>
       </SplitMenuButton>
-      <SplitMenuButton layoutX="140.0" layoutY="129.0" mnemonicParsing="false" text="Filter by:">
+      <SplitMenuButton layoutX="137.0" layoutY="119.0" mnemonicParsing="false" text="Filter by:">
         <items>
           <MenuItem mnemonicParsing="false" text="This week" />
           <MenuItem mnemonicParsing="false" text="Last 30 days" />
             <MenuItem mnemonicParsing="false" text="Last 6 months" />
             <MenuItem mnemonicParsing="false" text="Last 12 months" />
         </items>
+         <font>
+            <Font size="14.0" />
+         </font>
       </SplitMenuButton>
    </children>
 </AnchorPane>

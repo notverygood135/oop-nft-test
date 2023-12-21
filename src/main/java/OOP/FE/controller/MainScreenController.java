@@ -212,6 +212,7 @@ public class MainScreenController implements Initializable{
     }
     
     //NFT button
+    @FXML
     public void switchToNFTMainScreen(ActionEvent e) throws IOException{
 //    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/MainScreen1.fxml"));
 //    	Scene scene = new Scene(loader.load());
