@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -54,7 +55,7 @@
                   <TextField fx:id="searchField" onKeyReleased="#search" />
                   <ListView fx:id="resultList" prefHeight="135.0" prefWidth="353.0" />
                </children></VBox>
-            <Button layoutX="635.0" layoutY="35.0" mnemonicParsing="false" onAction="#switchToMainScreen" style="-fx-background-color: Black; -fx-background-radius: 15;" text="NFT" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="635.0" layoutY="35.0" mnemonicParsing="false" onAction="#switchToNFTMainScreen" style="-fx-background-color: Black; -fx-background-radius: 15;" text="NFT" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
@@ -102,5 +103,6 @@
       </StackPane>
       <Button layoutX="19.0" layoutY="172.0" mnemonicParsing="false" onAction="#switchToPost" prefHeight="202.0" prefWidth="336.0" text="View NFT posts" />
       <Button layoutX="381.0" layoutY="172.0" mnemonicParsing="false" onAction="#switchToFavorites" prefHeight="202.0" prefWidth="336.0" text="View your NFT list of favorite posts " textAlignment="CENTER" wrapText="true" />
+      <ToggleButton fx:id="blogToNFTToggleBtn" layoutX="614.0" layoutY="114.0" mnemonicParsing="false" style="-fx-background-radius: 30;" text="NFT" />
    </children>
 </AnchorPane>

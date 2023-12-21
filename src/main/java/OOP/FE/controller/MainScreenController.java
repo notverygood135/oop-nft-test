@@ -9,10 +9,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -23,6 +25,7 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable{
@@ -48,6 +51,9 @@ public class MainScreenController implements Initializable{
     @FXML
     private VBox searchContainer;
     // Keywords in search bar
+    @FXML
+    private ToggleButton blogToNFTToggleBtn;
+
     final private ObservableList<String> keywords = FXCollections.observableArrayList(
             "Blockchain", "NFT", "Twitter", "Blog");
 
@@ -206,11 +212,17 @@ public class MainScreenController implements Initializable{
     }
     
     //NFT button
-    public void switchToMainScreen(ActionEvent event) throws IOException{
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/MainScreen.fxml"));
-    	Scene scene = new Scene(loader.load(), 731, 657);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    public void switchToNFTMainScreen(ActionEvent e) throws IOException{
+//    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/MainScreen1.fxml"));
+//    	Scene scene = new Scene(loader.load());
+//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        stage.setScene(scene);
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/OOP/screen/MainScene1.fxml")));
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.show();
 	}
     
     //pressing post button

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import OOP.BE.datascraping.dataloader.EntitiesGenerator;
 import OOP.BE.datascraping.dataloader.NFTGenerator;
@@ -29,16 +30,18 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 
 public class NFT_MainScene implements Initializable {
-    private Scene scene;
-    private Stage stage;
-    private Parent root;
 
-    public void switchToScene3(ActionEvent e) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("/OOP/screen/MainScene3.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+    public void switchToBlogScene(ActionEvent e) throws IOException{
+//        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/resources/OOP/screen/MainScene.fxml")));
+//        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+//        Scene scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/MainScreen.fxml"));
+        Scene scene = new Scene(loader.load());
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.setScene(scene);
-        stage.show();
     }
 
     @FXML
@@ -65,10 +68,8 @@ public class NFT_MainScene implements Initializable {
     private TextField toPrice;
 
     ObservableList<NFTCollection> list = FXCollections.observableArrayList();
-
     @Override
     public void initialize(URL location, ResourceBundle rb) {
-//        ObservableList<NFTCollection> list = FXCollections.observableArrayList();
         Map<String, Collection<Entity>> data = new NFTGenerator(0).generate();
         Collection<Entity> twit = data.get("NFTCollection");
         for(Entity e: twit){
@@ -77,7 +78,13 @@ public class NFT_MainScene implements Initializable {
         initializeTableView();
         setSearchText();
     }
-
+    private void initializeTableView() {
+        TblVwColCollection.setCellValueFactory(new PropertyValueFactory<NFTCollection, String>("name"));
+        TblVwColVolume.setCellValueFactory(new PropertyValueFactory<NFTCollection, Double>("volume"));
+        TblVwColFloorPrice.setCellValueFactory(new PropertyValueFactory<NFTCollection, Double>("floorPrice"));
+        TblVwColSale.setCellValueFactory(new PropertyValueFactory<NFTCollection, Integer>("numOfSales"));
+        TblVwColChange.setCellValueFactory(new PropertyValueFactory<NFTCollection, Double>("volumeChange"));
+    }
     private void updateTableDays(int days) {
         list.clear();
         Map<String, Collection<Entity>> data = new NFTGenerator(days).generate();
@@ -106,7 +113,6 @@ public class NFT_MainScene implements Initializable {
         dayStatus.setText("All");
         webStatus.setText("All");
     }
-
     private void updateTableWeb(String web) {
         list.clear();
         Map<String, Collection<Entity>> data = new NFTGenerator(web).generate();
@@ -142,17 +148,7 @@ public class NFT_MainScene implements Initializable {
         webStatus.setText("Niftygateway");
     }
 
-    private void initializeTableView() {
-        TblVwColCollection.setCellValueFactory(new PropertyValueFactory<NFTCollection, String>("name"));
-        TblVwColVolume.setCellValueFactory(new PropertyValueFactory<NFTCollection, Double>("volume"));
-        TblVwColFloorPrice.setCellValueFactory(new PropertyValueFactory<NFTCollection, Double>("floorPrice"));
-        TblVwColSale.setCellValueFactory(new PropertyValueFactory<NFTCollection, Integer>("numOfSales"));
-        TblVwColChange.setCellValueFactory(new PropertyValueFactory<NFTCollection, Double>("volumeChange"));
-    }
-
     void setSearchText() {
-//        tableView.setItems(list);
-
         FilteredList<NFTCollection> filteredList = new FilteredList<>(list, b -> true);
         searchText.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredList.setPredicate(nftCollection -> {
@@ -163,9 +159,6 @@ public class NFT_MainScene implements Initializable {
                 if (nftCollection.getName().toLowerCase().indexOf(searchKeyword) > -1) {
                     return true;
                 }
-//                else if (nftCollection.getVolume().contains(searchKeyword) > -1){
-//                    return true;
-//                }
                 else {
                     return false;
                 }
@@ -174,28 +167,48 @@ public class NFT_MainScene implements Initializable {
         SortedList<NFTCollection> sortedList = new SortedList<>(filteredList);
         sortedList.comparatorProperty().bind(tableView.comparatorProperty());
         tableView.setItems(sortedList);
+        setPriceSearchText(sortedList);
     }
 
+    void setPriceSearchText(ObservableList<NFTCollection> list) {
+        FilteredList<NFTCollection> priceFilteredList = new FilteredList<>(list, b -> true);
 
-    @FXML
-    private void setPriceSearch(ActionEvent e) {
-        // Lấy giá trị từ TextField
-        double from = Double.parseDouble(fromPrice.getText());
-        double to = Double.parseDouble(toPrice.getText());
+        // Listener for 'fromPrice' TextField
+        fromPrice.textProperty().addListener((observable, oldValue, newValue) -> {
+            priceFilteredList.setPredicate(nftCollection -> {
+                double from = parseDoubleOrDefault(fromPrice.getText(), Double.NEGATIVE_INFINITY);
+                double to = parseDoubleOrDefault(toPrice.getText(), Double.POSITIVE_INFINITY);
 
-        // Tạo một FilteredList để lọc dữ liệu dựa trên khoảng giá
-        FilteredList<NFTCollection> priceFilteredList = new FilteredList<>(list);
-        priceFilteredList.setPredicate(nftCollection ->
-                nftCollection.getFloorPrice() >= from && nftCollection.getFloorPrice() <= to);
+                return nftCollection.getFloorPrice() >= from && nftCollection.getFloorPrice() <= to;
+            });
+        });
 
-        // Tạo một SortedList từ FilteredList
-        SortedList<NFTCollection> sortedPriceList = new SortedList<>(priceFilteredList);
-        sortedPriceList.comparatorProperty().bind(tableView.comparatorProperty());
+        // Listener for 'toPrice' TextField
+        toPrice.textProperty().addListener((observable, oldValue, newValue) -> {
+            priceFilteredList.setPredicate(nftCollection -> {
+                double from = parseDoubleOrDefault(fromPrice.getText(), Double.NEGATIVE_INFINITY);
+                double to = parseDoubleOrDefault(toPrice.getText(), Double.POSITIVE_INFINITY);
 
-        // Đặt dữ liệu lọc vào TableView
-        tableView.setItems(sortedPriceList);
+                return nftCollection.getFloorPrice() >= from && nftCollection.getFloorPrice() <= to;
+            });
+        });
+
+        // Create a sorted list
+        SortedList<NFTCollection> sortedList = new SortedList<>(priceFilteredList);
+        sortedList.comparatorProperty().bind(tableView.comparatorProperty());
+        tableView.setItems(sortedList);
     }
 
+    private double parseDoubleOrDefault(String value, double defaultValue) {
+        try {
+            if (value.isEmpty() || value.isBlank()) {
+                return defaultValue;
+            }
+            return Double.parseDouble(value);
+        } catch (NumberFormatException | NullPointerException e) {
+            return defaultValue;
+        }
+    }
 
     public void changeDetailScene(ActionEvent e) throws IOException {
         NFTCollection selectedItem = tableView.getSelectionModel().getSelectedItem();
