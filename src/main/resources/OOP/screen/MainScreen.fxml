@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,10 +15,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OOP.FE.controller.MainScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="731.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OOP.FE.controller.MainScreenController">
    <children>
       <AnchorPane prefHeight="99.0" prefWidth="712.0" style="-fx-background-color: FFAAAA;">
          <children>
+            <ImageView fitHeight="99.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/LogoOOP.png" />
+               </image></ImageView>
             <FlowPane fx:id="flowPane" hgap="13.0" layoutX="168.0" layoutY="63.0" prefHeight="22.0" prefWidth="563.0">
                <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
@@ -46,11 +50,7 @@
                </StackPane>
 
             </FlowPane>
-            <ImageView fitHeight="64.0" fitWidth="131.0" layoutX="14.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/appimage.jpg" />
-               </image></ImageView>
-            <VBox fx:id="searchContainer" layoutX="162.0" layoutY="14.0" prefHeight="26.0" prefWidth="353.0" style="-fx-background-color: white;-fx-background-radius: 15;">
+            <VBox fx:id="searchContainer" layoutX="168.0" layoutY="21.0" prefHeight="26.0" prefWidth="353.0" style="-fx-background-color: white;-fx-background-radius: 15;">
                <children>
                   <TextField fx:id="searchField" onKeyReleased="#search" />
                   <ListView fx:id="resultList" prefHeight="135.0" prefWidth="353.0" />
@@ -62,47 +62,77 @@
             </Button>
          </children>
       </AnchorPane>
-      <Text layoutX="28.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to &lt;app name&gt;">
+      <Text layoutX="28.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to &lt;app name&gt;">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font size="31.0" />
          </font>
       </Text>
-      <Text layoutX="28.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What do you want to do? " />
-      <Text layoutX="14.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="More popular contents:">
+      <Text layoutX="26.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What do you want to do? ">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Italic" size="17.0" />
+         </font></Text>
+      <Text layoutX="29.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="More popular contents:">
+         <font>
+            <Font name="System Italic" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="25.0" layoutY="542.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Most popular hashtags ">
+      <Text layoutX="40.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Most popular hashtags ">
          <font>
-            <Font name="System Bold" size="16.0" />
+            <Font name="System Italic" size="16.0" />
          </font>
       </Text>
-      <Text layoutX="25.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About trending, price, volumes">
+      <Text layoutX="40.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About trending, price, volumes">
          <font>
-            <Font name="System Bold" size="16.0" />
+            <Font name="System Italic" size="16.0" />
          </font>
       </Text>
-      <StackPane layoutX="21.0" layoutY="428.0" prefHeight="27.0" prefWidth="69.0">
+      <VBox alignment="CENTER" layoutX="14.0" layoutY="324.0" prefHeight="82.0" prefWidth="690.0">
          <children>
-            <Hyperlink fx:id="twitterLink" onAction="#handleTwitterLinkClick" text="Twitter">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Hyperlink>
+            <StackPane alignment="CENTER_LEFT" prefHeight="39.0" prefWidth="543.0">
+               <children>
+                  <Hyperlink fx:id="twitterLink" onAction="#handleTwitterLinkClick" prefHeight="38.0" prefWidth="224.0" text="Twitter">
+                     <font>
+                        <Font name="System Italic" size="20.0" />
+                     </font>
+                  </Hyperlink>
+                  <ImageView fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                     <image>
+                        <Image url="@../image/icons8-twitter-50.png" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="80.0" />
+                     </StackPane.margin>
+                  </ImageView>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </StackPane>
+            <StackPane alignment="CENTER_LEFT" prefHeight="38.0" prefWidth="472.0">
+               <children>
+                  <Hyperlink fx:id="blogLink" onAction="#handleBlogClick" prefHeight="38.0" prefWidth="186.0" text="Other blogs">
+                     <font>
+                        <Font name="System Italic" size="20.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0" />
+            <StackPane prefHeight="150.0" prefWidth="477.0" />
          </children>
-      </StackPane>
-      <StackPane layoutX="21.0" layoutY="473.0" prefHeight="33.0" prefWidth="106.0">
-         <children>
-            <Hyperlink fx:id="blogLink" onAction="#handleBlogClick" prefHeight="33.0" prefWidth="129.0" text="Other blogs">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Hyperlink>
-         </children>
-      </StackPane>
-      <Button layoutX="19.0" layoutY="172.0" mnemonicParsing="false" onAction="#switchToPost" prefHeight="202.0" prefWidth="336.0" text="View NFT posts" />
-      <Button layoutX="381.0" layoutY="172.0" mnemonicParsing="false" onAction="#switchToFavorites" prefHeight="202.0" prefWidth="336.0" text="View your NFT list of favorite posts " textAlignment="CENTER" wrapText="true" />
-      <ToggleButton fx:id="blogToNFTToggleBtn" layoutX="614.0" layoutY="114.0" mnemonicParsing="false" style="-fx-background-radius: 30;" text="NFT" />
+      </VBox>
+      <Button alignment="CENTER" layoutX="20.0" layoutY="215.0" mnemonicParsing="false" onAction="#switchToPost" prefHeight="42.0" prefWidth="690.0" text="View NFT posts">
+         <font>
+            <Font size="21.0" />
+         </font></Button>
    </children>
 </AnchorPane>
