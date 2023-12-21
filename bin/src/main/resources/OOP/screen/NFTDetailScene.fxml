@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane prefHeight="228.0" prefWidth="567.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OOP.FE.controller.NFT_ViewDetailController">
+   <children>
+      <HBox layoutX="23.0" layoutY="14.0" prefHeight="200.0" prefWidth="498.0">
+         <children>
+            <ImageView fx:id="detImg" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox prefHeight="200.0" prefWidth="186.0">
+               <children>
+                  <Label prefHeight="31.0" prefWidth="170.0" text="Name:" />
+                  <Label layoutX="20.0" layoutY="10.0" prefHeight="31.0" prefWidth="170.0" text="Floor Price:" />
+                  <Label layoutX="20.0" layoutY="41.0" prefHeight="31.0" prefWidth="170.0" text="Volume:" />
+                  <Label layoutX="20.0" layoutY="72.0" prefHeight="31.0" prefWidth="170.0" text="Sale:" />
+                  <Label layoutX="20.0" layoutY="104.0" prefHeight="31.0" prefWidth="170.0" text="Change:" />
+                  <Label layoutX="20.0" layoutY="135.0" prefHeight="31.0" prefWidth="170.0" text="Supply:" />
+               </children>
+               <padding>
+                  <Insets left="10.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox layoutX="210.0" layoutY="10.0" prefHeight="200.0" prefWidth="327.0">
+               <children>
+                  <Label fx:id="detName" prefHeight="31.0" text="Name" />
+                  <HBox prefHeight="31.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="detFloorPrice" prefHeight="31.0" text="Floor Price" />
+                        <Label fx:id="detFloorPrice1" layoutX="10.0" layoutY="10.0" prefHeight="31.0" text="ETH">
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Label fx:id="detVolume" layoutX="20.0" layoutY="41.0" prefHeight="31.0" text="Volume" />
+                  <Label fx:id="detSale" layoutX="20.0" layoutY="72.0" prefHeight="31.0" text="Sale" />
+                  <Label fx:id="detChange" layoutX="20.0" layoutY="104.0" prefHeight="31.0" text="Change" />
+                  <Label fx:id="detSupply" layoutX="20.0" layoutY="135.0" prefHeight="31.0" text="Supply" />
+               </children>
+               <padding>
+                  <Insets left="10.0" top="5.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

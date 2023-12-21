@@ -1,166 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.AutoCompleteTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #CCCCCC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="731.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OOP.FE.controller.NFT_MainScene">
    <children>
-      <Pane fx:id="TopPanel" prefHeight="45.0" prefWidth="600.0" style="-fx-background-color: black;">
+      <Text layoutX="31.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 26;" text="Collection stats" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="130.0" />
+      <AnchorPane layoutX="40.0" layoutY="111.0" prefHeight="98.0" prefWidth="731.0" style="-fx-background-color: FFAAAA;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <MenuBar fx:id="menuBar" accessibleRole="IMAGE_VIEW" layoutX="93.0" layoutY="10.0" style="-fx-background-color: gray;">
-              <menus>
-                <Menu mnemonicParsing="false" text="Stat">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
-              </menus>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </MenuBar>
-            <Button layoutX="468.0" layoutY="11.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="60.0" style="-fx-background-color: gray;" text="Search" />
-            <TextField layoutX="317.0" layoutY="11.0" style="-fx-background-color: gray;" />
+            <Button layoutX="508.0" layoutY="31.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: #000000; -fx-background-radius: 10;" text="STAT" textFill="WHITE" AnchorPane.leftAnchor="508.0" AnchorPane.topAnchor="31.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="624.0" layoutY="33.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: #000000; -fx-background-radius: 10;" text="NFT" textFill="WHITE" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="33.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="100.0" fitWidth="120.0" layoutX="27.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../image/LogoOOP.png" />
+               </image>
+            </ImageView>
+            <FlowPane fx:id="flowPane" hgap="13.0" layoutX="126.0" layoutY="64.0" prefHeight="22.0" prefWidth="563.0">
+               <children>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#lol" />
+                     </children>
+                  </StackPane>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#PHP" />
+                     </children>
+                  </StackPane>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#CSS" />
+                     </children>
+                  </StackPane>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#Kotlin" />
+                     </children>
+                  </StackPane>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#C++" />
+                     </children>
+                  </StackPane>
+               </children>
+            </FlowPane>
+            <Button layoutX="429.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToScene3" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: #000000;" text="Search" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <AutoCompleteTextField layoutX="126.0" layoutY="26.0" prefHeight="25.0" prefWidth="281.0" />
          </children>
-      </Pane>
-      <Text layoutX="97.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 26;" text="Collection stats" />
-      <Button layoutX="588.0" layoutY="142.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: gray;" text="View All" />
-      <SplitMenuButton layoutX="553.0" layoutY="240.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="75.0" text="ALL" AnchorPane.rightAnchor="1292.0">
-         <items>
-            <MenuItem mnemonicParsing="false" text="1h" />
-            <MenuItem mnemonicParsing="false" text="24h" />
-            <MenuItem mnemonicParsing="false" text="7d" />
-            <MenuItem mnemonicParsing="false" text="30d" />
-            <MenuItem mnemonicParsing="false" text="ALL" />
-         </items>
-      </SplitMenuButton>
-      <GridPane gridLinesVisible="true" layoutX="110.0" layoutY="272.0" prefHeight="641.0" prefWidth="1710.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      </AnchorPane>
+      <TableView fx:id="tableView" layoutX="45.0" layoutY="282.0" prefHeight="345.0" prefWidth="648.0">
+         <columns>
+            <TableColumn fx:id="TblVwColCollection" prefWidth="235.0" text="Collection" />
+            <TableColumn fx:id="TblVwColVolume" prefWidth="127.0" text="Volume" />
+            <TableColumn fx:id="TblVwColFloorPrice" prefWidth="123.0" text="Floor Price" />
+            <TableColumn fx:id="TblVwColSale" prefWidth="87.0" text="Sale" />
+            <TableColumn fx:id="TblVwColChange" prefWidth="75.0" text="\% Change" />
+         </columns>
+      </TableView>
+      <Button layoutX="546.0" layoutY="182.0" mnemonicParsing="false" onAction="#changeDetailScene" prefHeight="30.0" prefWidth="112.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Detail Collection" textFill="WHITE" />
+      <HBox layoutX="45.0" layoutY="231.0" prefHeight="35.0" prefWidth="211.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.rowIndex="4" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Collection" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="1" />
-            <Text layoutX="123.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.rowIndex="1" />
-            <Text layoutX="10.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Text layoutX="66.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.rowIndex="2" />
-            <Text layoutX="10.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Text layoutX="66.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.rowIndex="3" />
-            <Text layoutX="10.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Text layoutX="10.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volume" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="2" />
-            <Text layoutX="123.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Text layoutX="123.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.rowIndex="5" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sale" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="4" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor Price" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="3" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <Text layoutX="66.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\% Change" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="5" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+20%" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-            <Text layoutX="294.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Art" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="6" />
-            <Text layoutX="351.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="6" GridPane.rowIndex="5" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-            <Text layoutX="351.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#" textAlignment="CENTER" wrappingWidth="56.08984375" />
+            <Button mnemonicParsing="false" onAction="#setTable1day" prefHeight="35.0" prefWidth="54.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="1 day">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#setTable7day" prefHeight="35.0" prefWidth="64.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="7 days">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#setTableAllDay" prefHeight="35.0" prefWidth="54.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="All">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
          </children>
-      </GridPane>
-      <Pane fx:id="TopPanel1" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="600.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      </HBox>
+      <HBox layoutX="398.0" layoutY="239.0" prefHeight="35.0" prefWidth="296.0">
          <children>
-            <ImageView fitHeight="45.0" fitWidth="117.0" layoutX="72.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search Collection" wrappingWidth="123.98307228088379">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+            </Text>
+            <TextField fx:id="searchText" prefHeight="26.0" prefWidth="178.0" promptText="Name of Collection" />
          </children>
-      </Pane>
-      <Button layoutX="580.0" layoutY="104.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="60.0" style="-fx-background-color: gray;" text="NFT" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-      <Button layoutX="1543.0" layoutY="145.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="60.0" style="-fx-background-color: gray;" text="Search" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="10.0" />
-      <TextField layoutX="581.0" layoutY="145.0" style="-fx-background-color: gray;" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="10.0" />
-      <MenuBar fx:id="menuBar11" accessibleRole="IMAGE_VIEW" layoutX="574.0" layoutY="61.0" style="-fx-background-color: gray;" AnchorPane.leftAnchor="575.0" AnchorPane.topAnchor="10.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="Stat">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Close" />
-               </items>
-            </Menu>
-         </menus>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </MenuBar>
-      <MenuBar fx:id="menuBar1" accessibleRole="IMAGE_VIEW" layoutX="939.0" layoutY="142.0" style="-fx-background-color: gray;" AnchorPane.leftAnchor="945.0" AnchorPane.topAnchor="10.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="Sell">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Close" />
-               </items>
-            </Menu>
-         </menus>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </MenuBar>
-      <SplitMenuButton layoutX="316.0" layoutY="240.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="117.0" text="All categories">
-         <items>
-            <MenuItem mnemonicParsing="false" text="1h" />
-            <MenuItem mnemonicParsing="false" text="24h" />
-            <MenuItem mnemonicParsing="false" text="7d" />
-            <MenuItem mnemonicParsing="false" text="30d" />
-            <MenuItem mnemonicParsing="false" text="ALL" />
-         </items>
-      </SplitMenuButton>
-      <SplitMenuButton layoutX="100.0" layoutY="240.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="117.0" text="All chains" AnchorPane.leftAnchor="100.0">
-         <items>
-            <MenuItem mnemonicParsing="false" text="1h" />
-            <MenuItem mnemonicParsing="false" text="24h" />
-            <MenuItem mnemonicParsing="false" text="7d" />
-            <MenuItem mnemonicParsing="false" text="30d" />
-            <MenuItem mnemonicParsing="false" text="ALL" />
-         </items>
-      </SplitMenuButton>
-      <Button layoutX="100.0" layoutY="142.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: gray;" text="Trending" AnchorPane.leftAnchor="100.0" />
-      <Button layoutX="253.0" layoutY="142.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: gray;" text="Top" />
-      <Button layoutX="414.0" layoutY="142.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: gray;" text="View list" />
+      </HBox>
+      <HBox layoutX="45.0" layoutY="180.0" prefHeight="35.0" prefWidth="319.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#setTableBinance" prefHeight="35.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="Binance">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#setTableOpensea" prefHeight="35.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="Opensea">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#setTableRarible" prefHeight="35.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="Rarible">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button layoutX="138.0" layoutY="10.0" mnemonicParsing="false" onAction="#setTableNiftygateway" prefHeight="35.0" style="-fx-background-color: #808080; -fx-background-radius: 10;" text="Niftygateway" />
+         </children>
+      </HBox>
+      <Text fx:id="webStatus" layoutX="382.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All" />
+      <Text fx:id="dayStatus" layoutX="263.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All" />
    </children>
 </AnchorPane>

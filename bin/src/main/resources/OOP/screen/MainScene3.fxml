@@ -1,119 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import com.gluonhq.charm.glisten.control.AutoCompleteTextField?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.SplitMenuButton?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #CCCCCC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="731.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OOP.FE.controller.MS3Controller">
    <children>
-      <Pane fx:id="TopPanel" prefHeight="45.0" prefWidth="600.0" style="-fx-background-color: black;">
-         <children>
-            <MenuBar fx:id="menuBar" accessibleRole="IMAGE_VIEW" layoutX="93.0" layoutY="10.0" style="-fx-background-color: gray;">
-               <menus>
-                  <Menu mnemonicParsing="false" text="Stat">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Close" />
-                     </items>
-                  </Menu>
-               </menus>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </MenuBar>
-            <Button layoutX="468.0" layoutY="11.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="60.0" style="-fx-background-color: gray;" text="Search" />
-            <TextField layoutX="317.0" layoutY="11.0" style="-fx-background-color: gray;" />
-         </children>
-      </Pane>
-      <Pane fx:id="TopPanel1" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="600.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <ImageView fitHeight="45.0" fitWidth="117.0" layoutX="72.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
-         </children>
-      </Pane>
-      <Button layoutX="580.0" layoutY="104.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="60.0" style="-fx-background-color: gray;" text="NFT" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-      <Button layoutX="1543.0" layoutY="145.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="60.0" style="-fx-background-color: gray;" text="Search" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="10.0" />
-      <TextField layoutX="581.0" layoutY="145.0" style="-fx-background-color: gray;" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="10.0" />
-      <MenuBar fx:id="menuBar11" accessibleRole="IMAGE_VIEW" layoutX="574.0" layoutY="61.0" style="-fx-background-color: gray;" AnchorPane.leftAnchor="575.0" AnchorPane.topAnchor="10.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="Stat">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Close" />
-               </items>
-            </Menu>
-         </menus>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </MenuBar>
-      <MenuBar fx:id="menuBar1" accessibleRole="IMAGE_VIEW" layoutX="939.0" layoutY="142.0" style="-fx-background-color: gray;" AnchorPane.leftAnchor="945.0" AnchorPane.topAnchor="10.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="Sell">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Close" />
-               </items>
-            </Menu>
-         </menus>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </MenuBar>
-      <Text layoutX="43.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Result for" wrappingWidth="142.13671875" AnchorPane.leftAnchor="100.0">
+      <Text layoutX="31.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Result for" wrappingWidth="142.13671875">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Pane layoutX="54.0" layoutY="161.0" prefHeight="200.0" prefWidth="1596.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="200.0">
+      <Pane layoutX="64.0" layoutY="171.0" prefHeight="200.0" prefWidth="1596.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
          <children>
-            <ImageView fitHeight="117.0" fitWidth="332.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
-            <Text layoutX="24.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Describe............................................................................................................................................................................................................................................" wrappingWidth="775.080078125" />
-            <Text layoutX="371.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name of collection" wrappingWidth="142.13671875" />
-            <Text layoutX="371.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner of the collection" wrappingWidth="142.13671875" />
-            <Text layoutX="1403.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="101.6171875" />
+            <ImageView fitHeight="117.0" fitWidth="237.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
+            <Text layoutX="24.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Describe..................................................................." wrappingWidth="237.0000000000001" />
+            <Text layoutX="279.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name of collection" wrappingWidth="142.13671875" />
+            <Text layoutX="279.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner of the collection" wrappingWidth="142.13671875" />
+            <Text layoutX="506.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="101.6171875">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
-      <Pane layoutX="64.0" layoutY="171.0" prefHeight="200.0" prefWidth="1596.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="350.0">
+      <Pane layoutX="50.0" layoutY="414.0" prefHeight="200.0" prefWidth="1596.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
          <children>
-            <ImageView fitHeight="117.0" fitWidth="332.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
-            <Text layoutX="24.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Describe............................................................................................................................................................................................................................................" wrappingWidth="775.080078125" />
-            <Text layoutX="371.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name of collection" wrappingWidth="142.13671875" />
-            <Text layoutX="371.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner of the collection" wrappingWidth="142.13671875" />
-            <Text layoutX="1403.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="101.6171875" />
+            <ImageView fitHeight="117.0" fitWidth="237.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
+            <Text layoutX="24.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Describe..................................................................." wrappingWidth="237.0000000000001" />
+            <Text layoutX="279.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name of collection" wrappingWidth="142.13671875" />
+            <Text layoutX="279.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner of the collection" wrappingWidth="142.13671875" />
+            <Text layoutX="506.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="101.6171875">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
-      <Pane layoutX="64.0" layoutY="171.0" prefHeight="200.0" prefWidth="1596.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="550.0">
-         <children>
-            <ImageView fitHeight="117.0" fitWidth="332.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
-            <Text layoutX="24.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Describe............................................................................................................................................................................................................................................" wrappingWidth="775.080078125" />
-            <Text layoutX="371.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name of collection" wrappingWidth="142.13671875" />
-            <Text layoutX="371.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner of the collection" wrappingWidth="142.13671875" />
-            <Text layoutX="1403.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="101.6171875" />
-         </children>
-      </Pane>
-      <Pane layoutX="74.0" layoutY="181.0" prefHeight="200.0" prefWidth="1596.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="750.0">
-         <children>
-            <ImageView fitHeight="117.0" fitWidth="332.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
-            <Text layoutX="24.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Describe............................................................................................................................................................................................................................................" wrappingWidth="775.080078125" />
-            <Text layoutX="371.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name of collection" wrappingWidth="142.13671875" />
-            <Text layoutX="371.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner of the collection" wrappingWidth="142.13671875" />
-            <Text layoutX="1403.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="101.6171875" />
-         </children>
-      </Pane>
-      <SplitMenuButton layoutX="1465.0" layoutY="126.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="75.0" text="Price">
+      <SplitMenuButton layoutX="511.0" layoutY="129.0" mnemonicParsing="false" onAction="#priceClicked" prefHeight="35.0" prefWidth="131.0" text="Price low to high">
          <items>
-            <MenuItem mnemonicParsing="false" text="1h" />
-            <MenuItem mnemonicParsing="false" text="24h" />
-            <MenuItem mnemonicParsing="false" text="7d" />
-            <MenuItem mnemonicParsing="false" text="30d" />
-            <MenuItem mnemonicParsing="false" text="ALL" />
+            <MenuItem mnemonicParsing="false" text="Price high to low" />
+            <MenuItem mnemonicParsing="false" text="Recently listed" />
+            <MenuItem mnemonicParsing="false" text="Best offer" />
+            <MenuItem mnemonicParsing="false" text="Highest last sale" />
+            <MenuItem mnemonicParsing="false" text="Recently sold" />
+            <MenuItem mnemonicParsing="false" text="Recently created" />
+            <MenuItem mnemonicParsing="false" text="Most viewed" />
+            <MenuItem mnemonicParsing="false" text="Oldest" />
+            <MenuItem mnemonicParsing="false" text="Most favorited" />
+            <MenuItem mnemonicParsing="false" text="Ending soon" />
+            <MenuItem mnemonicParsing="false" text="Recently received" />
          </items>
       </SplitMenuButton>
+      <ScrollBar layoutX="703.0" layoutY="405.0" orientation="VERTICAL" prefHeight="482.0" prefWidth="14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <AnchorPane layoutX="50.0" layoutY="121.0" prefHeight="98.0" prefWidth="731.0" style="-fx-background-color: FFAAAA;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button layoutX="508.0" layoutY="31.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: #000000; -fx-background-radius: 10;" text="STAT" textFill="WHITE" AnchorPane.leftAnchor="508.0" AnchorPane.topAnchor="31.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="624.0" layoutY="33.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="35.0" prefWidth="81.0" style="-fx-background-color: #000000; -fx-background-radius: 10;" text="NFT" textFill="WHITE" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="33.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="100.0" fitWidth="120.0" layoutX="27.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../image/LogoOOP.png" />
+               </image>
+            </ImageView>
+            <FlowPane fx:id="flowPane" hgap="13.0" layoutX="126.0" layoutY="64.0" prefHeight="22.0" prefWidth="563.0">
+               <children>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#lol" />
+                     </children>
+                  </StackPane>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#PHP" />
+                     </children>
+                  </StackPane>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#CSS" />
+                     </children>
+                  </StackPane>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#Kotlin" />
+                     </children>
+                  </StackPane>
+                  <StackPane style="-fx-padding: 2 5 2 5; -fx-background-color: #ffd8d8; -fx-border-color: black; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="tag">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd8d8" height="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 10; -fx-arc-width: 10;" width="47.0" />
+                        <Text text="#C++" />
+                     </children>
+                  </StackPane>
+               </children>
+            </FlowPane>
+            <Button layoutX="414.0" layoutY="23.0" mnemonicParsing="false" onAction="#switchToScene3" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: #000000;" text="Search" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <AutoCompleteTextField layoutX="126.0" layoutY="26.0" prefHeight="25.0" prefWidth="281.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
