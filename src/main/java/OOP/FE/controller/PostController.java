@@ -1,5 +1,7 @@
 package OOP.FE.controller;
 
+import OOP.BE.datascraping.dataloader.EntitiesGenerator;
+import OOP.BE.datascraping.model.Entity;
 import OOP.BE.datascraping.model.twitter.Twitter;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,7 +36,7 @@ public class PostController implements Initializable {
     private TextField searchField;
 
     @FXML
-    private ListView<String> postListView;
+    private ListView<Twitter> postListView;
 
     @FXML
     private FlowPane flowPane;
@@ -47,6 +49,8 @@ public class PostController implements Initializable {
     private List<Twitter> posts;
 
     private Set<String> currentTags = new HashSet<>();
+    
+    private ObservableList<Twitter> twitterPosts;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -77,25 +81,32 @@ public class PostController implements Initializable {
                 }
             });
         }
+        
+        Map<String, Collection<Entity>> data =   new EntitiesGenerator().generate();
+        Collection<Entity> twit = data.get("Twitter");
+        // thay key NFTCollection bang Twitter hoac Blog de lay du lieu tuong ung
+        for(Entity e: twit){
+            postListView.getItems().add((Twitter) e);
+        }
 
-        loadPostsAndTags();
+//        loadPostsAndTags(); // this is commented due to entitiesgenerator applied
         setupTaggingSystems();
     }
 
-    private void loadPostsAndTags() {
-        posts = loadPostsFromJson("/OOP/data/twitter.json");
-
-        if (posts == null) {
-            posts = loadPostsFromJson("OOP/data/twitter.json");
-        }
-
-        if (posts != null) {
-            displayPopularTags();
-            displayPosts();
-        } else {
-            System.out.println("Posts are null or empty.");
-        }
-    }
+//    private void loadPostsAndTags() {
+//        posts = loadPostsFromJson("/OOP/data/twitter.json");
+//
+//        if (posts == null) {
+//            posts = loadPostsFromJson("OOP/data/twitter.json");
+//        }
+//
+//        if (posts != null) {
+//            displayPopularTags();
+//            displayPosts();
+//        } else {
+//            System.out.println("Posts are null or empty.");
+//        }
+//    }
 
     private List<Twitter> loadPostsFromJson(String jsonFilePath) {
         try {
@@ -136,9 +147,9 @@ public class PostController implements Initializable {
     }
 
     private void displayPosts() {
-        ObservableList<String> postContents = FXCollections.observableArrayList();
+        ObservableList<Twitter> postContents = FXCollections.observableArrayList();
         for (Twitter post : posts) {
-            postContents.add(post.toString());
+            postContents.add(post);
         }
         postListView.setItems(postContents);
     }
@@ -215,9 +226,9 @@ public class PostController implements Initializable {
                     .filter(post -> postContainsKeywordOrTag(post, searchText))
                     .toList();
 
-            ObservableList<String> postContents = FXCollections.observableArrayList();
+            ObservableList<Twitter> postContents = FXCollections.observableArrayList();
             for (Twitter post : filteredPosts) {
-                postContents.add(post.toString());
+                postContents.add(post);
             }
             postListView.setItems(postContents);
 

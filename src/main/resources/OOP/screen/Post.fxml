@@ -67,7 +67,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <ListView fx:id="postListView" layoutX="8.0" layoutY="172.0" prefHeight="472.0" prefWidth="714.0" />
+      <ListView fx:id="postListView" layoutX="22.0" layoutY="172.0" prefHeight="462.0" prefWidth="700.0" />
       <SplitMenuButton layoutX="24.0" layoutY="119.0" mnemonicParsing="false" text="Sort by:">
         <items>
           <MenuItem mnemonicParsing="false" text="Name: A to Z" />

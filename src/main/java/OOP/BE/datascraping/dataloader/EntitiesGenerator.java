@@ -49,7 +49,7 @@ public class EntitiesGenerator {
 
     public static void main(String[] args) {
         Map<String, Collection<Entity>> data =   new EntitiesGenerator().generate();
-        Collection<Entity> twit = data.get("NFTCollection");
+        Collection<Entity> twit = data.get("Twitter");
         // thay key NFTCollection bang Twitter hoac Blog de lay du lieu tuong ung
         for(Entity e: twit){
             e.printDetail();
