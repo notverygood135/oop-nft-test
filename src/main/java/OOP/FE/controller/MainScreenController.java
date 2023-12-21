@@ -219,7 +219,7 @@ public class MainScreenController implements Initializable{
 //        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 //        stage.setScene(scene);
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/OOP/screen/MainScene1.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/OOP/screen/NFTMainScene.fxml")));
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

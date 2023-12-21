@@ -10,7 +10,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/OOP/screen/MainScene1.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/OOP/screen/NFTMainScene.fxml"));
 			Scene scene = new Scene(root);
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			String css = this.getClass().getResource("/OOP/style/application.css").toExternalForm();
