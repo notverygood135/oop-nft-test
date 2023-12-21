@@ -3,10 +3,12 @@ package OOP.FE.controller;
 import OOP.BE.datascraping.dataloader.EntitiesGenerator;
 import OOP.BE.datascraping.model.Entity;
 import OOP.BE.datascraping.model.twitter.Twitter;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,6 +19,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -29,7 +33,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.*;
+import java.util.function.Predicate;
 
 public class PostController implements Initializable {
     @FXML
@@ -45,12 +51,25 @@ public class PostController implements Initializable {
     private VBox searchContainer;
 
     private final Popup popup = new Popup();
+    
+    @FXML
+    private SplitMenuButton filterDropDownMenu;
+    
+    @FXML
+    private MenuItem thisWeek;
+    
+    @FXML
+    private MenuItem last30Days;
+
+    @FXML
+    private MenuItem last6Months;
+    
+    @FXML
+    private MenuItem last12Months;
 
     private List<Twitter> posts;
 
     private Set<String> currentTags = new HashSet<>();
-    
-    private ObservableList<Twitter> twitterPosts;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -81,17 +100,20 @@ public class PostController implements Initializable {
                 }
             });
         }
-        
-        Map<String, Collection<Entity>> data =   new EntitiesGenerator().generate();
+              
+//        loadPostsAndTags(); // this is commented due to entitiesgenerator applied
+        Map<String, Collection<Entity>> data = new EntitiesGenerator().generate();
         Collection<Entity> twit = data.get("Twitter");
         // thay key NFTCollection bang Twitter hoac Blog de lay du lieu tuong ung
         for(Entity e: twit){
             postListView.getItems().add((Twitter) e);
         }
-
-//        loadPostsAndTags(); // this is commented due to entitiesgenerator applied
+        
+//        filteringPosts();
         setupTaggingSystems();
     }
+    
+    	
 
 //    private void loadPostsAndTags() {
 //        posts = loadPostsFromJson("/OOP/data/twitter.json");
@@ -213,6 +235,72 @@ public class PostController implements Initializable {
         }
         searchField.setDisable(false);
     }
+    
+//    //Handle filter dropdown button pressed
+//    @FXML
+//    private void handleFilterMenuItemClick(ActionEvent event) {
+//    	MenuItem menuItem = (MenuItem) event.getSource();
+//    	filterDropDownMenu.setText(menuItem.getText());
+//    }
+    
+    // set default filter value
+//    @FXML
+//    private void setDefaultFilterMenuItem() {
+//    	// Set the default value 
+//    	if (!filterDropDownMenu.getItems().isEmpty()) {
+//    		MenuItem defaultFilterItem = filterDropDownMenu.getItems().get(1);
+//    		filterDropDownMenu.setText(defaultFilterItem.getText());
+//    	}
+//    }
+    
+    
+    
+//    private void filteringPosts() {
+//    	
+//    	filterDropDownMenu.getItems().addAll(thisWeek, last30Days, last6Months, last12Months);
+//    	
+//    	ObservableList<Twitter> postContents = FXCollections.observableArrayList();
+//    	postListView.setItems(postContents);
+//    	for (Twitter post : postListView.getItems()) {
+//			postContents.add(post);
+//		}
+//    	FilteredList<Twitter> filteredContents = new FilteredList<Twitter>(postContents);
+//    	
+//    	//Last 7 days
+//    	thisWeek.setOnAction(event -> {
+//    		//Set the predicate to filter the last 30 Days
+//    		Predicate<Twitter> thisWeekPredicate = item ->
+//    			LocalDate.parse(item.getDate()).isAfter(LocalDate.now().minusDays(7));
+//    		filteredContents.setPredicate(thisWeekPredicate);
+//    		
+//    	
+//    	});
+//    	
+//    	//Last 30 days
+//    	last30Days.setOnAction(event -> {
+//    		//Set the predicate to filter the last 30 Days
+//    		Predicate<Twitter> lastMonthPredicate = item ->
+//    			LocalDate.parse(item.getDate()).isAfter(LocalDate.now().minusDays(30));
+//    		filteredContents.setPredicate(lastMonthPredicate);
+//    	});
+//    	
+//    	//Last 6 Months
+//    	last6Months.setOnAction(event -> {
+//    		//Set the predicate to filter the last 30 Days
+//    		Predicate<Twitter> last6MonthsPredicate = item ->
+//    			LocalDate.parse(item.getDate()).isAfter(LocalDate.now().minusMonths(6));
+//    		filteredContents.setPredicate(last6MonthsPredicate);
+//    	});
+//    	
+//    	//Last 12 months
+//    	last12Months.setOnAction(event -> {
+//    		//Set the predicate to filter the last 30 Days
+//    		Predicate<Twitter> lastYearPredicate = item ->
+//    			LocalDate.parse(item.getDate()).isAfter(LocalDate.now().minusMonths(12));
+//    		filteredContents.setPredicate(lastYearPredicate);
+//    	});
+//    	
+//    }
 
     @FXML
     private void search(KeyEvent event) {

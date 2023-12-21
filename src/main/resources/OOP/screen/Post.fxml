@@ -81,7 +81,7 @@
             <Font size="14.0" />
          </font>
       </SplitMenuButton>
-      <SplitMenuButton layoutX="137.0" layoutY="119.0" mnemonicParsing="false" text="Filter by:">
+      <SplitMenuButton fx:id="filterDropDownMenu" layoutX="137.0" layoutY="119.0" mnemonicParsing="false" text="Filter by:">
         <items>
           <MenuItem mnemonicParsing="false" text="This week" />
           <MenuItem mnemonicParsing="false" text="Last 30 days" />
