@@ -18,10 +18,7 @@ import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitMenuButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -67,6 +64,22 @@ public class PostController implements Initializable {
     @FXML
     private MenuItem last12Months;
 
+    @FXML
+    private SplitMenuButton sortDropDownMenu;
+
+    @FXML
+    private MenuItem ascended;
+
+    @FXML
+    private MenuItem descended;
+
+    @FXML
+    private MenuItem earliest;
+
+    @FXML
+    private MenuItem latest;
+
+    @FXML
     private List<Twitter> posts;
 
     private Set<String> currentTags = new HashSet<>();
@@ -101,50 +114,17 @@ public class PostController implements Initializable {
             });
         }
               
-//        loadPostsAndTags(); // this is commented due to entitiesgenerator applied
         Map<String, Collection<Entity>> data = new EntitiesGenerator().generate();
         Collection<Entity> twit = data.get("Twitter");
-        // thay key NFTCollection bang Twitter hoac Blog de lay du lieu tuong ung
+        posts = new ArrayList<>(); // Initialize the posts list
+
         for(Entity e: twit){
             postListView.getItems().add((Twitter) e);
+            posts.add((Twitter) e); // Add posts to the list
         }
-        
-//        filteringPosts();
+
         setupTaggingSystems();
-    }
-    
-    	
-
-//    private void loadPostsAndTags() {
-//        posts = loadPostsFromJson("/OOP/data/twitter.json");
-//
-//        if (posts == null) {
-//            posts = loadPostsFromJson("OOP/data/twitter.json");
-//        }
-//
-//        if (posts != null) {
-//            displayPopularTags();
-//            displayPosts();
-//        } else {
-//            System.out.println("Posts are null or empty.");
-//        }
-//    }
-
-    private List<Twitter> loadPostsFromJson(String jsonFilePath) {
-        try {
-            URL url = getClass().getResource(jsonFilePath);
-            if (url == null) {
-                System.err.println("File does not exist: " + jsonFilePath);
-                return null;
-            }
-
-            ObjectMapper objectMapper = new ObjectMapper();
-            return objectMapper.readValue(url, new TypeReference<>() {
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+        initializeSorting();
     }
 
     private void displayPopularTags() {
@@ -235,7 +215,23 @@ public class PostController implements Initializable {
         }
         searchField.setDisable(false);
     }
-    
+
+    // Handle sort dropdown button
+    @FXML
+    private void initializeSorting() {
+        ascended.setOnAction(event -> sortPosts(Comparator.comparing(Twitter::getUser)));
+        descended.setOnAction(event -> sortPosts(Comparator.comparing(Twitter::getUser).reversed()));
+        earliest.setOnAction(event -> sortPosts(Comparator.comparing(Twitter::getDate)));
+        latest.setOnAction(event -> sortPosts(Comparator.comparing(Twitter::getDate).reversed()));
+    }
+
+    // Sort posts
+    private void sortPosts(Comparator<Twitter> comparator) {
+        ObservableList<Twitter> postContents = FXCollections.observableArrayList(postListView.getItems());
+        postContents.sort(comparator);
+        postListView.setItems(postContents);
+    }
+
 //    //Handle filter dropdown button pressed
 //    @FXML
 //    private void handleFilterMenuItemClick(ActionEvent event) {
@@ -302,6 +298,8 @@ public class PostController implements Initializable {
 //    	
 //    }
 
+
+
     @FXML
     private void search(KeyEvent event) {
         String searchText = searchField.getText().toLowerCase();
@@ -334,7 +332,14 @@ public class PostController implements Initializable {
                 .map(String::toLowerCase)
                 .toList();
 
-        return lowerCaseContent.contains(searchText) || hashtags.contains(searchText);
+        // Check if the search text matches the content or any tag
+        return lowerCaseContent.contains(searchText) || hashtags.contains(searchText) || containsAllTags(hashtags, searchText);
+    }
+
+    // Filter posts with Tags
+    private boolean containsAllTags(List<String> tags, String searchText) {
+        String[] searchTags = searchText.split(", ");
+        return tags.containsAll(Arrays.asList(searchTags));
     }
 
     private void showPopup() {

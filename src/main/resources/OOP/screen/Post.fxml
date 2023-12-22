@@ -68,12 +68,12 @@
          </children>
       </AnchorPane>
       <ListView fx:id="postListView" layoutX="22.0" layoutY="172.0" prefHeight="462.0" prefWidth="700.0" />
-      <SplitMenuButton layoutX="24.0" layoutY="119.0" mnemonicParsing="false" text="Sort by:">
+      <SplitMenuButton fx:id="sortDropDownMenu" layoutX="24.0" layoutY="119.0" mnemonicParsing="false" text="Sort by:">
         <items>
-          <MenuItem mnemonicParsing="false" text="Name: A to Z" />
-          <MenuItem mnemonicParsing="false" text="Name: Z to A" />
-            <MenuItem mnemonicParsing="false" text="Date: Earliest" />
-            <MenuItem mnemonicParsing="false" text="Date: Latest" />
+          <MenuItem fx:id="ascended" mnemonicParsing="false" text="Name: A to Z" />
+          <MenuItem fx:id="descended" mnemonicParsing="false" text="Name: Z to A" />
+            <MenuItem fx:id="earliest" mnemonicParsing="false" text="Date: Earliest" />
+            <MenuItem fx:id="latest" mnemonicParsing="false" text="Date: Latest" />
             <MenuItem mnemonicParsing="false" text="Most Viewed" />
             <MenuItem mnemonicParsing="false" text="Best Ratings" />
         </items>
