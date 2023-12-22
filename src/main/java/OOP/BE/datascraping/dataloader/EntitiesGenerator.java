@@ -4,11 +4,14 @@ import OOP.BE.datascraping.dataloader.blog.JsonLoaderBlog;
 import OOP.BE.datascraping.dataloader.nftcollection.JsonLoaderNFTCollection;
 import OOP.BE.datascraping.dataloader.twitter.JsonLoaderTwitter;
 import OOP.BE.datascraping.model.Entity;
+import OOP.BE.datascraping.model.blog.Blog;
+import OOP.BE.datascraping.model.blog.BlogEntity;
 import OOP.BE.datascraping.model.twitter.TwitterEntity;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static OOP.BE.datascraping.utils.BlogTagFrequency.calculateTagFrequency;
 
 public class EntitiesGenerator {
     private DataLoader[] loaders;
@@ -28,6 +31,7 @@ public class EntitiesGenerator {
             new JsonLoaderBlog("cointelegraph.json")
         };
     }
+
 
     public Map<String, Collection<Entity>> generate(){
         Map<String, Collection<Entity>> data = new HashMap<>();
@@ -49,10 +53,20 @@ public class EntitiesGenerator {
 
     public static void main(String[] args) {
         Map<String, Collection<Entity>> data =   new EntitiesGenerator().generate();
-        Collection<Entity> twit = data.get("Twitter");
+        Collection<Entity> blogs =  data.get("Blog");
+        Collection<Entity> twits =  data.get("Twitter");
+
         // thay key NFTCollection bang Twitter hoac Blog de lay du lieu tuong ung
-        for(Entity e: twit){
-            e.printDetail();
+        Map<String, Integer> tagFrequencyMap = calculateTagFrequency(blogs);
+        Map<String, Integer> tagFrequencyMap1 = calculateTagFrequency(twits);
+        // Print the result
+        int cnt=0;
+        for (Map.Entry<String, Integer> entry : tagFrequencyMap1.entrySet()) {
+            ++cnt;
+            System.out.println(entry.getKey() + ": " + entry.getValue());
         }
+        System.out.println("So luong tag: "+cnt);
+
+
     }
 }
