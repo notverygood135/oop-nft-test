@@ -70,14 +70,17 @@ public class NFTGenerator {
     public Map<String, Collection<Entity>> generate(){
         Map<String, Collection<Entity>> data = new HashMap<>();
         for(DataLoader dataLoader : loaders){
-            int dem = 0;
             Collection<Entity> entities = dataLoader.load();
             String loaderClassName = dataLoader.getClass().getSimpleName();
             String label = loaderClassName.substring(10);
-            data.put(label, entities);
-            for(Entity x : entities){
+            if (!data.containsKey(label)) {
+                data.put(label, entities);
+            }
+            else {
+                data.get(label).addAll(entities);
             }
         }
+        System.out.println(data);
         return data;
     }
 }

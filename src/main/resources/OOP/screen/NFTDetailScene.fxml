@@ -2,13 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="228.0" prefWidth="567.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OOP.FE.controller.NFT_ViewDetailController">
+<AnchorPane prefHeight="538.0" prefWidth="829.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OOP.FE.controller.NFT_ViewDetailController">
    <children>
       <HBox layoutX="23.0" layoutY="14.0" prefHeight="200.0" prefWidth="498.0">
          <children>
@@ -50,5 +51,11 @@
             </VBox>
          </children>
       </HBox>
+      <Label layoutX="14.0" layoutY="221.0" prefHeight="40.0" prefWidth="142.0" text="Related Articles">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ListView fx:id="postListView" layoutX="14.0" layoutY="261.0" prefHeight="265.0" prefWidth="804.0" />
    </children>
 </AnchorPane>

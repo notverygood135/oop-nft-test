@@ -31,11 +31,11 @@ public abstract class JsonLoader<BlogEntity> extends FileLoader<BlogEntity> {
                 String title = getStringAndRemove(data, "title");
                 String author = getStringAndRemove(data, "author");
                 String content = getStringAndRemove(data, "content");
-                String date = getStringAndRemove(data, "content");
+                String date = getStringAndRemove(data, "date");
                 List<String> tag = getListAndRemove(data, "tag");
 
                 BlogEntity entity = createSpecificEntity(
-                        link, img, title, author, content, date, tag
+                        link, img, title, content, author, date, tag
                 );
 
                 blogEntities.add(entity);

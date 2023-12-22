@@ -156,12 +156,7 @@ public class NFT_MainScene implements Initializable {
                     return true;
                 }
                 String searchKeyword = newValue.toLowerCase();
-                if (nftCollection.getName().toLowerCase().indexOf(searchKeyword) > -1) {
-                    return true;
-                }
-                else {
-                    return false;
-                }
+                return nftCollection.getName().toLowerCase().contains(searchKeyword);
             });
         });
         SortedList<NFTCollection> sortedList = new SortedList<>(filteredList);

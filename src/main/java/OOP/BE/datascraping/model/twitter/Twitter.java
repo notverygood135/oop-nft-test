@@ -18,6 +18,5 @@ public class Twitter extends TwitterEntity {
         // Customize this method based on how you want to display Twitter content
         return "Date: " + getDate() + "\nUser: " + getUser() + "\nContent: " + getContent() + "\nHashtags: " + getHashtags();
     }
-
 }
 

@@ -86,6 +86,7 @@ public class PostController implements Initializable {
         Collection<Entity> twit = data.get("Twitter");
         // thay key NFTCollection bang Twitter hoac Blog de lay du lieu tuong ung
         for(Entity e: twit){
+            System.out.println(e);
             postListView.getItems().add((Twitter) e);
         }
 
@@ -148,10 +149,9 @@ public class PostController implements Initializable {
 
     private void displayPosts() {
         ObservableList<Twitter> postContents = FXCollections.observableArrayList();
-        for (Twitter post : posts) {
-            postContents.add(post);
-        }
+        postContents.addAll(posts);
         postListView.setItems(postContents);
+        System.out.println(postListView);
     }
 
     private void addTagToFlowPane(String tagText) {
@@ -227,9 +227,7 @@ public class PostController implements Initializable {
                     .toList();
 
             ObservableList<Twitter> postContents = FXCollections.observableArrayList();
-            for (Twitter post : filteredPosts) {
-                postContents.add(post);
-            }
+            postContents.addAll(filteredPosts);
             postListView.setItems(postContents);
 
             if (!filteredPosts.isEmpty()) {
