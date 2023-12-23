@@ -1,32 +1,23 @@
 package OOP.FE.controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.Collection;
-import java.util.Map;
-import java.util.ResourceBundle;
-
-import OOP.BE.datascraping.dataloader.EntitiesGenerator;
+import OOP.BE.datascraping.dataloader.BlogGenerator;
 import OOP.BE.datascraping.model.Entity;
+import OOP.BE.datascraping.model.blog.Blog;
 import OOP.BE.datascraping.model.nftcollection.NFTCollection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
-import javafx.scene.Node;
 
-public class NFT_ViewDetailController {
+import java.net.URL;
+import java.util.*;
+
+public class NFT_ViewDetailController implements Initializable {
 
     @FXML
     private ImageView detImg;
@@ -49,6 +40,14 @@ public class NFT_ViewDetailController {
     @FXML
     private Label detVolume;
 
+    @FXML
+    private ListView<Blog> postListView = new ListView<>(FXCollections.observableArrayList());
+
+    @FXML
+    private Label blogCount;
+
+    private List<Blog> blogList = new ArrayList<>();
+
     public void setDetChange(NFTCollection collection){
         detName.setText(String.valueOf(collection.getName()));
         detFloorPrice.setText(String.valueOf(collection.getFloorPrice()));
@@ -62,7 +61,45 @@ public class NFT_ViewDetailController {
             Image image = new Image(imageUrl);
             detImg.setImage(image);
         } else {
-             detImg.setImage(null); // Để ImageView trống
+            detImg.setImage(null); // Để ImageView trống
+        }
+
+        String collectionName = collection.getName();
+        int count = 0;
+        for (Blog b : blogList) {
+            if (b.getTitle().contains(collectionName) || b.getContent().contains(collectionName)) {
+                postListView.getItems().add(b);
+                count++;
+            }
+        }
+        blogCount.setText(String.valueOf(count));
+
+        postListView.setCellFactory(param -> new ListCell<>() {
+            private ImageView imageView = new ImageView();
+            @Override
+            public void updateItem(Blog blog, boolean empty) {
+                super.updateItem(blog, empty);
+                if (empty) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    Image image = new Image(blog.getImg(), 100, 100, false, false);
+                    imageView.setImage(image);
+                    setText(blog.toString());
+                    setGraphic(imageView);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle rb) {
+        ObservableList<Blog> list = FXCollections.observableArrayList();
+        Map<String, Collection<Entity>> data = new BlogGenerator().generate();
+        Collection<Entity> blogs = data.get("Blog");
+        for(Entity e: blogs){
+            Blog blog = (Blog) e;
+            blogList.add(blog);
         }
     }
 }

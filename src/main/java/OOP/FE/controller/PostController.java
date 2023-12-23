@@ -119,6 +119,7 @@ public class PostController implements Initializable {
         posts = new ArrayList<>(); // Initialize the posts list
 
         for(Entity e: twit){
+            System.out.println(e);
             postListView.getItems().add((Twitter) e);
             posts.add((Twitter) e); // Add posts to the list
         }
@@ -150,10 +151,9 @@ public class PostController implements Initializable {
 
     private void displayPosts() {
         ObservableList<Twitter> postContents = FXCollections.observableArrayList();
-        for (Twitter post : posts) {
-            postContents.add(post);
-        }
+        postContents.addAll(posts);
         postListView.setItems(postContents);
+        System.out.println(postListView);
     }
 
     private void addTagToFlowPane(String tagText) {
@@ -313,9 +313,7 @@ public class PostController implements Initializable {
                     .toList();
 
             ObservableList<Twitter> postContents = FXCollections.observableArrayList();
-            for (Twitter post : filteredPosts) {
-                postContents.add(post);
-            }
+            postContents.addAll(filteredPosts);
             postListView.setItems(postContents);
 
             if (!filteredPosts.isEmpty()) {
