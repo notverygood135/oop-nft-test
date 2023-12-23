@@ -3,10 +3,12 @@ package OOP.FE.controller;
 import OOP.BE.datascraping.dataloader.EntitiesGenerator;
 import OOP.BE.datascraping.model.Entity;
 import OOP.BE.datascraping.model.twitter.Twitter;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,8 +18,7 @@ import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -29,7 +30,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.*;
+import java.util.function.Predicate;
 
 public class PostController implements Initializable {
     @FXML
@@ -45,12 +48,41 @@ public class PostController implements Initializable {
     private VBox searchContainer;
 
     private final Popup popup = new Popup();
+    
+    @FXML
+    private SplitMenuButton filterDropDownMenu;
+    
+    @FXML
+    private MenuItem thisWeek;
+    
+    @FXML
+    private MenuItem last30Days;
 
+    @FXML
+    private MenuItem last6Months;
+    
+    @FXML
+    private MenuItem last12Months;
+
+    @FXML
+    private SplitMenuButton sortDropDownMenu;
+
+    @FXML
+    private MenuItem ascended;
+
+    @FXML
+    private MenuItem descended;
+
+    @FXML
+    private MenuItem earliest;
+
+    @FXML
+    private MenuItem latest;
+
+    @FXML
     private List<Twitter> posts;
 
     private Set<String> currentTags = new HashSet<>();
-    
-    private ObservableList<Twitter> twitterPosts;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -81,49 +113,19 @@ public class PostController implements Initializable {
                 }
             });
         }
-        
-        Map<String, Collection<Entity>> data =   new EntitiesGenerator().generate();
+              
+        Map<String, Collection<Entity>> data = new EntitiesGenerator().generate();
         Collection<Entity> twit = data.get("Twitter");
-        // thay key NFTCollection bang Twitter hoac Blog de lay du lieu tuong ung
+        posts = new ArrayList<>(); // Initialize the posts list
+
         for(Entity e: twit){
             System.out.println(e);
             postListView.getItems().add((Twitter) e);
+            posts.add((Twitter) e); // Add posts to the list
         }
 
-//        loadPostsAndTags(); // this is commented due to entitiesgenerator applied
         setupTaggingSystems();
-    }
-
-//    private void loadPostsAndTags() {
-//        posts = loadPostsFromJson("/OOP/data/twitter.json");
-//
-//        if (posts == null) {
-//            posts = loadPostsFromJson("OOP/data/twitter.json");
-//        }
-//
-//        if (posts != null) {
-//            displayPopularTags();
-//            displayPosts();
-//        } else {
-//            System.out.println("Posts are null or empty.");
-//        }
-//    }
-
-    private List<Twitter> loadPostsFromJson(String jsonFilePath) {
-        try {
-            URL url = getClass().getResource(jsonFilePath);
-            if (url == null) {
-                System.err.println("File does not exist: " + jsonFilePath);
-                return null;
-            }
-
-            ObjectMapper objectMapper = new ObjectMapper();
-            return objectMapper.readValue(url, new TypeReference<>() {
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+        initializeSorting();
     }
 
     private void displayPopularTags() {
@@ -214,6 +216,90 @@ public class PostController implements Initializable {
         searchField.setDisable(false);
     }
 
+    // Handle sort dropdown button
+    @FXML
+    private void initializeSorting() {
+        ascended.setOnAction(event -> sortPosts(Comparator.comparing(Twitter::getUser)));
+        descended.setOnAction(event -> sortPosts(Comparator.comparing(Twitter::getUser).reversed()));
+        earliest.setOnAction(event -> sortPosts(Comparator.comparing(Twitter::getDate)));
+        latest.setOnAction(event -> sortPosts(Comparator.comparing(Twitter::getDate).reversed()));
+    }
+
+    // Sort posts
+    private void sortPosts(Comparator<Twitter> comparator) {
+        ObservableList<Twitter> postContents = FXCollections.observableArrayList(postListView.getItems());
+        postContents.sort(comparator);
+        postListView.setItems(postContents);
+    }
+
+//    //Handle filter dropdown button pressed
+//    @FXML
+//    private void handleFilterMenuItemClick(ActionEvent event) {
+//    	MenuItem menuItem = (MenuItem) event.getSource();
+//    	filterDropDownMenu.setText(menuItem.getText());
+//    }
+    
+    // set default filter value
+//    @FXML
+//    private void setDefaultFilterMenuItem() {
+//    	// Set the default value 
+//    	if (!filterDropDownMenu.getItems().isEmpty()) {
+//    		MenuItem defaultFilterItem = filterDropDownMenu.getItems().get(1);
+//    		filterDropDownMenu.setText(defaultFilterItem.getText());
+//    	}
+//    }
+    
+    
+    
+//    private void filteringPosts() {
+//    	
+//    	filterDropDownMenu.getItems().addAll(thisWeek, last30Days, last6Months, last12Months);
+//    	
+//    	ObservableList<Twitter> postContents = FXCollections.observableArrayList();
+//    	postListView.setItems(postContents);
+//    	for (Twitter post : postListView.getItems()) {
+//			postContents.add(post);
+//		}
+//    	FilteredList<Twitter> filteredContents = new FilteredList<Twitter>(postContents);
+//    	
+//    	//Last 7 days
+//    	thisWeek.setOnAction(event -> {
+//    		//Set the predicate to filter the last 30 Days
+//    		Predicate<Twitter> thisWeekPredicate = item ->
+//    			LocalDate.parse(item.getDate()).isAfter(LocalDate.now().minusDays(7));
+//    		filteredContents.setPredicate(thisWeekPredicate);
+//    		
+//    	
+//    	});
+//    	
+//    	//Last 30 days
+//    	last30Days.setOnAction(event -> {
+//    		//Set the predicate to filter the last 30 Days
+//    		Predicate<Twitter> lastMonthPredicate = item ->
+//    			LocalDate.parse(item.getDate()).isAfter(LocalDate.now().minusDays(30));
+//    		filteredContents.setPredicate(lastMonthPredicate);
+//    	});
+//    	
+//    	//Last 6 Months
+//    	last6Months.setOnAction(event -> {
+//    		//Set the predicate to filter the last 30 Days
+//    		Predicate<Twitter> last6MonthsPredicate = item ->
+//    			LocalDate.parse(item.getDate()).isAfter(LocalDate.now().minusMonths(6));
+//    		filteredContents.setPredicate(last6MonthsPredicate);
+//    	});
+//    	
+//    	//Last 12 months
+//    	last12Months.setOnAction(event -> {
+//    		//Set the predicate to filter the last 30 Days
+//    		Predicate<Twitter> lastYearPredicate = item ->
+//    			LocalDate.parse(item.getDate()).isAfter(LocalDate.now().minusMonths(12));
+//    		filteredContents.setPredicate(lastYearPredicate);
+//    	});
+//    	
+//    }
+
+
+
     @FXML
     private void search(KeyEvent event) {
         String searchText = searchField.getText().toLowerCase();
@@ -244,7 +330,14 @@ public class PostController implements Initializable {
                 .map(String::toLowerCase)
                 .toList();
 
-        return lowerCaseContent.contains(searchText) || hashtags.contains(searchText);
+        // Check if the search text matches the content or any tag
+        return lowerCaseContent.contains(searchText) || hashtags.contains(searchText) || containsAllTags(hashtags, searchText);
+    }
+
+    // Filter posts with Tags
+    private boolean containsAllTags(List<String> tags, String searchText) {
+        String[] searchTags = searchText.split(", ");
+        return tags.containsAll(Arrays.asList(searchTags));
     }
 
     private void showPopup() {

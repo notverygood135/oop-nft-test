@@ -20,8 +20,9 @@ module OOP {
     requires org.seleniumhq.selenium.support;
 
     opens OOP to javafx.fxml;
-    opens OOP.FE.controller to javafx.fxml;
+    opens OOP.FE.controller to javafx.fxml, javafx.base;
     opens OOP.BE.datascraping.model.nftcollection to javafx.base;
     opens OOP.BE.datascraping.model.twitter to com.fasterxml.jackson.databind, com.fasterxml.jackson.core;
     exports OOP;
+    exports OOP.FE;
 }

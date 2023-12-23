@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="OOP.FE.controller.TagFrequencyController" alignment="TOP_CENTER">
+    <HBox spacing="10">
+        <Label text="Filter Top Tags:" />
+        <TextField fx:id="filterTextField" />
+        <Button text="Filter" onAction="#handleFilterButtonClick" />
+    </HBox>
+
+    <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn text="STT" fx:id="indexColumn" prefWidth="100" />
+            <TableColumn text="Tag Name" fx:id="tagNameColumn" />
+            <TableColumn text="Frequency" fx:id="frequencyColumn" />
+        </columns>
+    </TableView>
+</VBox>

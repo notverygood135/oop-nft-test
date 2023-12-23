@@ -1,5 +1,8 @@
 package OOP.FE.controller;
 
+import OOP.BE.datascraping.dataloader.EntitiesGenerator;
+import OOP.BE.datascraping.model.Entity;
+import OOP.BE.datascraping.utils.BlogTagFrequency;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,8 +28,7 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class MainScreenController implements Initializable{
     // Text field to get input from keyboard to search
@@ -225,6 +227,7 @@ public class MainScreenController implements Initializable{
         stage.setScene(scene);
         stage.show();
 	}
+
     
     //pressing post button
     @FXML
@@ -243,6 +246,37 @@ public class MainScreenController implements Initializable{
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
 	}
+    //handle to navigation to Hottag
+    @FXML
+    public void handleHotTag(MouseEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/tagfrequencytable.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+        // Get the controller
+        TagFrequencyController controller = loader.getController();
+        Map<String, Collection<Entity>> data1 =   new EntitiesGenerator().generate();
+        Collection<Entity> blogs =  data1.get("Blog");
+        Collection<Entity> twits =  data1.get("Twitter");
+        Collection<Entity> combinedCollection = new ArrayList<>();
+        combinedCollection.addAll(blogs);
+        combinedCollection.addAll(twits);
+
+        Map<String, Integer> tagFrequencyMap = BlogTagFrequency.calculateTagFrequency(combinedCollection);
+        controller.setData(tagFrequencyMap);
+
+        Scene scene = new Scene(root, 1560, 800);
+
+        Stage stage = new Stage();
+        stage.setTitle("Hot Tag Screen");
+        // Set the new scene
+        stage.setScene(scene);
+        stage.show();
+    }
 }
 
 
