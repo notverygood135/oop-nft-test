@@ -56,6 +56,11 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <Label fx:id="blogCount" layoutX="156.0" layoutY="228.0" text="Related Articles">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
       <ListView fx:id="postListView" layoutX="14.0" layoutY="261.0" prefHeight="265.0" prefWidth="804.0" />
    </children>
 </AnchorPane>

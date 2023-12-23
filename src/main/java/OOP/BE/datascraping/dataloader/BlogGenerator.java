@@ -34,7 +34,6 @@ public class BlogGenerator {
                 data.get(label).addAll(entities);
             }
         }
-        System.out.println(data.get("Blog").size());
         return data;
     }
 }

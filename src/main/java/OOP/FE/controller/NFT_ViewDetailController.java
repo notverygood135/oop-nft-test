@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -40,7 +41,10 @@ public class NFT_ViewDetailController implements Initializable {
     private Label detVolume;
 
     @FXML
-    private ListView<Blog> postListView;
+    private ListView<Blog> postListView = new ListView<>(FXCollections.observableArrayList());
+
+    @FXML
+    private Label blogCount;
 
     private List<Blog> blogList = new ArrayList<>();
 
@@ -52,13 +56,6 @@ public class NFT_ViewDetailController implements Initializable {
         detChange.setText(String.valueOf(collection.getVolumeChange()));
         detSupply.setText(String.valueOf(collection.getTotalSupply()));
 
-        String collectionName = collection.getName();
-        for (Blog b : blogList) {
-            if (b.getTitle().contains(collectionName) || b.getContent().contains(collectionName)) {
-                postListView.getItems().add(b);
-            }
-        }
-
         String imageUrl = collection.getUrl();
         if (imageUrl != null && !imageUrl.isEmpty()) {
             Image image = new Image(imageUrl);
@@ -66,6 +63,33 @@ public class NFT_ViewDetailController implements Initializable {
         } else {
             detImg.setImage(null); // Để ImageView trống
         }
+
+        String collectionName = collection.getName();
+        int count = 0;
+        for (Blog b : blogList) {
+            if (b.getTitle().contains(collectionName) || b.getContent().contains(collectionName)) {
+                postListView.getItems().add(b);
+                count++;
+            }
+        }
+        blogCount.setText(String.valueOf(count));
+
+        postListView.setCellFactory(param -> new ListCell<>() {
+            private ImageView imageView = new ImageView();
+            @Override
+            public void updateItem(Blog blog, boolean empty) {
+                super.updateItem(blog, empty);
+                if (empty) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    Image image = new Image(blog.getImg(), 100, 100, false, false);
+                    imageView.setImage(image);
+                    setText(blog.toString());
+                    setGraphic(imageView);
+                }
+            }
+        });
     }
 
     @Override
@@ -73,12 +97,9 @@ public class NFT_ViewDetailController implements Initializable {
         ObservableList<Blog> list = FXCollections.observableArrayList();
         Map<String, Collection<Entity>> data = new BlogGenerator().generate();
         Collection<Entity> blogs = data.get("Blog");
-        int count = 0;
         for(Entity e: blogs){
             Blog blog = (Blog) e;
             blogList.add(blog);
-            count++;
         }
-        System.out.println(count);
     }
 }
