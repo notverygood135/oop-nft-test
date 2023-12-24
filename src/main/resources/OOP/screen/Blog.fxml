@@ -67,7 +67,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <ListView fx:id="blogListView" layoutX="22.0" layoutY="172.0" prefHeight="462.0" prefWidth="804.0" />
+      <ListView fx:id="blogListView" layoutX="22.0" layoutY="172.0" prefHeight="462.0" prefWidth="688.0" />
       <SplitMenuButton fx:id="sortDropDownMenu" layoutX="24.0" layoutY="119.0" mnemonicParsing="false" text="Sort by:">
          <items>
             <MenuItem fx:id="ascended" mnemonicParsing="false" text="Title: A to Z" />
@@ -90,7 +90,5 @@
             <Font size="14.0" />
          </font>
       </SplitMenuButton>
-<!--      <Button fx:id="prevPage" layoutX="280.0" layoutY="119.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="27.0" text="&lt;" />-->
-<!--      <Button fx:id="nextPage" layoutX="327.0" layoutY="119.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="27.0" text="&gt;" />-->
    </children>
 </AnchorPane>
