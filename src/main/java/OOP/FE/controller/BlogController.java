@@ -1,5 +1,6 @@
 package OOP.FE.controller;
 
+import OOP.BE.datascraping.dataloader.BlogGenerator;
 import OOP.BE.datascraping.dataloader.EntitiesGenerator;
 import OOP.BE.datascraping.model.Entity;
 import OOP.BE.datascraping.model.blog.Blog;
@@ -76,9 +77,16 @@ public class BlogController implements Initializable {
     private MenuItem latest;
 
     @FXML
+    private Button prevPage;
+
+    @FXML
+    private Button nextPage;
+
+    @FXML
     private List<Blog> blogs;
 
     private Set<String> currentTags = new HashSet<>();
+    private int page = 0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -110,14 +118,15 @@ public class BlogController implements Initializable {
             });
         }
 
-        Map<String, Collection<Entity>> data = new EntitiesGenerator().generate();
-        Collection<Entity> blogs = data.get("Blog");
+        Map<String, Collection<Entity>> data = new BlogGenerator().generate();
+        Collection<Entity> blog = data.get("Blog");
         blogs = new ArrayList<>(); // Initialize the blogs list
-
-        for(Entity e: blogs){
-            System.out.println(e);
-            blogListView.getItems().add((Blog) e);
-            blogs.add((Blog) e); // Add blogs to the list
+        int count = 0;
+        for(Entity e: blog){
+            if (count++ < 10) {
+                blogListView.getItems().add((Blog) e);
+                blogs.add((Blog) e); // Add blogs to the list
+            }
         }
 
         blogListView.setCellFactory(param -> new ListCell<>() {
@@ -166,7 +175,6 @@ public class BlogController implements Initializable {
         ObservableList<Blog> blogContents = FXCollections.observableArrayList();
         blogContents.addAll(blogs);
         blogListView.setItems(blogContents);
-        System.out.println(blogListView);
     }
 
     private void addTagToFlowPane(String tagText) {

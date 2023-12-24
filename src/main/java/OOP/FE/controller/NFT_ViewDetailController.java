@@ -94,7 +94,6 @@ public class NFT_ViewDetailController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle rb) {
-        ObservableList<Blog> list = FXCollections.observableArrayList();
         Map<String, Collection<Entity>> data = new BlogGenerator().generate();
         Collection<Entity> blogs = data.get("Blog");
         for(Entity e: blogs){

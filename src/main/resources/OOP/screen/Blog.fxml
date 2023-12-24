@@ -67,15 +67,13 @@
             </VBox>
          </children>
       </AnchorPane>
-      <ListView fx:id="blogListView" layoutX="22.0" layoutY="172.0" prefHeight="462.0" prefWidth="700.0" />
+      <ListView fx:id="blogListView" layoutX="22.0" layoutY="172.0" prefHeight="462.0" prefWidth="804.0" />
       <SplitMenuButton fx:id="sortDropDownMenu" layoutX="24.0" layoutY="119.0" mnemonicParsing="false" text="Sort by:">
          <items>
-            <MenuItem fx:id="ascended" mnemonicParsing="false" text="Name: A to Z" />
-            <MenuItem fx:id="descended" mnemonicParsing="false" text="Name: Z to A" />
+            <MenuItem fx:id="ascended" mnemonicParsing="false" text="Title: A to Z" />
+            <MenuItem fx:id="descended" mnemonicParsing="false" text="Title: Z to A" />
             <MenuItem fx:id="earliest" mnemonicParsing="false" text="Date: Earliest" />
             <MenuItem fx:id="latest" mnemonicParsing="false" text="Date: Latest" />
-            <MenuItem mnemonicParsing="false" text="Most Viewed" />
-            <MenuItem mnemonicParsing="false" text="Best Ratings" />
          </items>
          <font>
             <Font size="14.0" />
@@ -92,5 +90,7 @@
             <Font size="14.0" />
          </font>
       </SplitMenuButton>
+<!--      <Button fx:id="prevPage" layoutX="280.0" layoutY="119.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="27.0" text="&lt;" />-->
+<!--      <Button fx:id="nextPage" layoutX="327.0" layoutY="119.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="27.0" text="&gt;" />-->
    </children>
 </AnchorPane>
