@@ -61,7 +61,7 @@
                </children>
             </FlowPane>
             <TextField layoutX="202.0" layoutY="23.0" prefHeight="26.0" prefWidth="326.0" promptText="Search ..." style="-fx-background-color: white; -fx-background-radius: 20;" />
-            <Button layoutX="635.0" layoutY="35.0" mnemonicParsing="false" onAction="#switchToBlogScene" style="-fx-background-color: Black; -fx-background-radius: 15;" text="Blog" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="635.0" layoutY="35.0" mnemonicParsing="false" onAction="#switchToMainScene" style="-fx-background-color: Black; -fx-background-radius: 15;" text="Back" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>

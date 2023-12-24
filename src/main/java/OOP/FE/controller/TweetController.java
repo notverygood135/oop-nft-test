@@ -2,13 +2,14 @@ package OOP.FE.controller;
 
 import OOP.BE.datascraping.dataloader.EntitiesGenerator;
 import OOP.BE.datascraping.model.Entity;
+import OOP.BE.datascraping.model.blog.Blog;
 import OOP.BE.datascraping.model.twitter.Twitter;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import OOP.FE.common.Tweet;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,7 +17,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
@@ -30,16 +30,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.*;
-import java.util.function.Predicate;
 
-public class PostController implements Initializable {
+public class TweetController implements Initializable {
     @FXML
     private TextField searchField;
 
     @FXML
-    private ListView<Twitter> postListView;
+    private ListView<Twitter> tweetListView;
 
     @FXML
     private FlowPane flowPane;
@@ -68,70 +66,36 @@ public class PostController implements Initializable {
     private SplitMenuButton sortDropDownMenu;
 
     @FXML
-    private MenuItem ascended;
-
-    @FXML
-    private MenuItem descended;
-
-    @FXML
     private MenuItem earliest;
 
     @FXML
     private MenuItem latest;
 
     @FXML
-    private List<Twitter> posts;
+    public TextField searchText;
 
+    private ObservableList<Twitter> tweets = FXCollections.observableArrayList();
     private Set<String> currentTags = new HashSet<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        searchField.setDisable(true);
-
-        searchContainer.setOnMouseClicked(event -> {
-            if (searchField.isDisabled()) {
-                searchField.setDisable(false);
-                searchField.requestFocus();
-            }
-        });
-
-        searchField.focusedProperty().addListener((obs, oldValue, newValue) -> {
-            if (!newValue) {
-                searchField.setDisable(true);
-            }
-        });
-
-        if (searchField.getScene() != null) {
-            searchField.getScene().addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-                Node source = (Node) event.getSource();
-                Bounds bounds = searchContainer.localToScreen(searchContainer.getBoundsInLocal());
-
-                if (source != searchField && !bounds.contains(event.getScreenX(), event.getScreenY())) {
-                    if (!searchField.isFocused()) {
-                        searchField.setDisable(true);
-                    }
-                }
-            });
-        }
-              
         Map<String, Collection<Entity>> data = new EntitiesGenerator().generate();
         Collection<Entity> twit = data.get("Twitter");
-        posts = new ArrayList<>(); // Initialize the posts list
 
         for(Entity e: twit){
-            System.out.println(e);
-            postListView.getItems().add((Twitter) e);
-            posts.add((Twitter) e); // Add posts to the list
+            tweetListView.getItems().add((Twitter) e);
+            tweets.add((Twitter) e); // Add tweets to the list
         }
 
         setupTaggingSystems();
         initializeSorting();
+        setSearchText();
     }
 
     private void displayPopularTags() {
         Map<String, Integer> tagFrequency = new HashMap<>();
-        for (Twitter post : posts) {
-            for (String hashtag : post.getHashtags()) {
+        for (Twitter tweet : tweets) {
+            for (String hashtag : tweet.getHashtags()) {
                 tagFrequency.put(hashtag, tagFrequency.getOrDefault(hashtag, 0) + 1);
             }
         }
@@ -149,11 +113,31 @@ public class PostController implements Initializable {
         currentTags.addAll(popularTags); // Initialize current tags with popular tags
     }
 
-    private void displayPosts() {
-        ObservableList<Twitter> postContents = FXCollections.observableArrayList();
-        postContents.addAll(posts);
-        postListView.setItems(postContents);
-        System.out.println(postListView);
+    void setSearchText() {
+        FilteredList<Twitter> filteredList = new FilteredList<>(tweets, b -> true);
+        searchText.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredList.setPredicate(tweet -> {
+                if (newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                    return true;
+                }
+                String searchKeyword = newValue.toLowerCase();
+
+                List<String> hashtags = tweet.getHashtags();
+                for (String hashtag : hashtags) {
+                    if (hashtag.toLowerCase().contains(searchKeyword)) {
+                        return true;
+                    }
+                }
+                return false;
+            });
+        });
+        tweetListView.setItems(filteredList);
+    }
+
+    private void displayTweets() {
+        ObservableList<Twitter> tweetContents = FXCollections.observableArrayList();
+        tweetContents.addAll(tweets);
+        tweetListView.setItems(tweetContents);
     }
 
     private void addTagToFlowPane(String tagText) {
@@ -219,17 +203,15 @@ public class PostController implements Initializable {
     // Handle sort dropdown button
     @FXML
     private void initializeSorting() {
-        ascended.setOnAction(event -> sortPosts(Comparator.comparing(Twitter::getUser)));
-        descended.setOnAction(event -> sortPosts(Comparator.comparing(Twitter::getUser).reversed()));
-        earliest.setOnAction(event -> sortPosts(Comparator.comparing(Twitter::getDate)));
-        latest.setOnAction(event -> sortPosts(Comparator.comparing(Twitter::getDate).reversed()));
+        earliest.setOnAction(event -> sortTweets(Comparator.comparing(Twitter::getDateTime)));
+        latest.setOnAction(event -> sortTweets(Comparator.comparing(Twitter::getDateTime).reversed()));
     }
 
-    // Sort posts
-    private void sortPosts(Comparator<Twitter> comparator) {
-        ObservableList<Twitter> postContents = FXCollections.observableArrayList(postListView.getItems());
-        postContents.sort(comparator);
-        postListView.setItems(postContents);
+    // Sort tweets
+    private void sortTweets(Comparator<Twitter> comparator) {
+        ObservableList<Twitter> tweetContents = FXCollections.observableArrayList(tweetListView.getItems());
+        tweetContents.sort(comparator);
+        tweetListView.setItems(tweetContents);
     }
 
 //    //Handle filter dropdown button pressed
@@ -251,16 +233,16 @@ public class PostController implements Initializable {
     
     
     
-//    private void filteringPosts() {
+//    private void filteringTweets() {
 //    	
 //    	filterDropDownMenu.getItems().addAll(thisWeek, last30Days, last6Months, last12Months);
 //    	
-//    	ObservableList<Twitter> postContents = FXCollections.observableArrayList();
-//    	postListView.setItems(postContents);
-//    	for (Twitter post : postListView.getItems()) {
-//			postContents.add(post);
+//    	ObservableList<Twitter> tweetContents = FXCollections.observableArrayList();
+//    	tweetListView.setItems(tweetContents);
+//    	for (Twitter tweet : tweetListView.getItems()) {
+//			tweetContents.add(tweet);
 //		}
-//    	FilteredList<Twitter> filteredContents = new FilteredList<Twitter>(postContents);
+//    	FilteredList<Twitter> filteredContents = new FilteredList<Twitter>(tweetContents);
 //    	
 //    	//Last 7 days
 //    	thisWeek.setOnAction(event -> {
@@ -306,17 +288,17 @@ public class PostController implements Initializable {
 
         if (searchText.isEmpty()) {
             popup.hide();
-            displayPosts(); // Display all posts when the search bar is empty
+            displayTweets(); // Display all tweets when the search bar is empty
         } else {
-            List<Twitter> filteredPosts = posts.stream()
-                    .filter(post -> postContainsKeywordOrTag(post, searchText))
+            List<Twitter> filteredTweets = tweets.stream()
+                    .filter(tweet -> tweetContainsKeywordOrTag(tweet, searchText))
                     .toList();
 
-            ObservableList<Twitter> postContents = FXCollections.observableArrayList();
-            postContents.addAll(filteredPosts);
-            postListView.setItems(postContents);
+            ObservableList<Twitter> tweetContents = FXCollections.observableArrayList();
+            tweetContents.addAll(filteredTweets);
+            tweetListView.setItems(tweetContents);
 
-            if (!filteredPosts.isEmpty()) {
+            if (!filteredTweets.isEmpty()) {
                 showPopup();
             } else {
                 popup.hide();
@@ -324,9 +306,9 @@ public class PostController implements Initializable {
         }
     }
 
-    private boolean postContainsKeywordOrTag(Twitter post, String searchText) {
-        String lowerCaseContent = post.getContent().toLowerCase();
-        List<String> hashtags = post.getHashtags().stream()
+    private boolean tweetContainsKeywordOrTag(Twitter tweet, String searchText) {
+        String lowerCaseContent = tweet.getContent().toLowerCase();
+        List<String> hashtags = tweet.getHashtags().stream()
                 .map(String::toLowerCase)
                 .toList();
 
@@ -334,7 +316,7 @@ public class PostController implements Initializable {
         return lowerCaseContent.contains(searchText) || hashtags.contains(searchText) || containsAllTags(hashtags, searchText);
     }
 
-    // Filter posts with Tags
+    // Filter tweets with Tags
     private boolean containsAllTags(List<String> tags, String searchText) {
         String[] searchTags = searchText.split(", ");
         return tags.containsAll(Arrays.asList(searchTags));
