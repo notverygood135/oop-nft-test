@@ -23,7 +23,7 @@ public class SceneController{
 	}
 	
 	public void switchToPost(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("D:/.vs/Java/NFT Project/nft-test-other-folder/src/main/resources/OOP/screen/Post.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("D:/.vs/Java/NFT Project/nft-test-other-folder/src/main/resources/OOP/screen/Tweet.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);

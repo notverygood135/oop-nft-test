@@ -188,16 +188,11 @@ public class MainScreenController implements Initializable{
 
     // Go to post screen
     @FXML
-    private void handleTwitterLinkClick() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/Post.fxml"));
-            Scene scene = new Scene(loader.load(), 800, 700); // Adjust the size as needed
-
-            Stage stage = (Stage) twitterLink.getScene().getWindow();
-            stage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private void switchToTwitter(ActionEvent e) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/Tweet.fxml"));
+        Scene scene = new Scene(loader.load(), 731, 657);
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
     }
 
     // Go to new screen with keywords
@@ -216,11 +211,6 @@ public class MainScreenController implements Initializable{
     //NFT button
     @FXML
     public void switchToNFTMainScreen(ActionEvent e) throws IOException{
-//    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/MainScreen1.fxml"));
-//    	Scene scene = new Scene(loader.load());
-//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        stage.setScene(scene);
-
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/OOP/screen/NFTMainScene.fxml")));
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -231,10 +221,10 @@ public class MainScreenController implements Initializable{
     
     //pressing post button
     @FXML
-    public void switchToPost(ActionEvent event) throws IOException{
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/Post.fxml"));
-    	Scene scene = new Scene(loader.load(), 731, 657);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    public void switchToBlog(ActionEvent e) throws IOException{
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/Blog.fxml"));
+        Scene scene = new Scene(loader.load(), 731, 657);
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.setScene(scene);
 	}
     

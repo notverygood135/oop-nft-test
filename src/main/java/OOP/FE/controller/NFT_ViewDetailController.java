@@ -41,7 +41,7 @@ public class NFT_ViewDetailController implements Initializable {
     private Label detVolume;
 
     @FXML
-    private ListView<Blog> postListView = new ListView<>(FXCollections.observableArrayList());
+    private ListView<Blog> blogListView = new ListView<>(FXCollections.observableArrayList());
 
     @FXML
     private Label blogCount;
@@ -68,13 +68,13 @@ public class NFT_ViewDetailController implements Initializable {
         int count = 0;
         for (Blog b : blogList) {
             if (b.getTitle().contains(collectionName) || b.getContent().contains(collectionName)) {
-                postListView.getItems().add(b);
+                blogListView.getItems().add(b);
                 count++;
             }
         }
         blogCount.setText(String.valueOf(count));
 
-        postListView.setCellFactory(param -> new ListCell<>() {
+        blogListView.setCellFactory(param -> new ListCell<>() {
             private ImageView imageView = new ImageView();
             @Override
             public void updateItem(Blog blog, boolean empty) {
@@ -94,7 +94,6 @@ public class NFT_ViewDetailController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle rb) {
-        ObservableList<Blog> list = FXCollections.observableArrayList();
         Map<String, Collection<Entity>> data = new BlogGenerator().generate();
         Collection<Entity> blogs = data.get("Blog");
         for(Entity e: blogs){
