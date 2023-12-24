@@ -26,7 +26,7 @@ public class DataCollector {
 
     public DataCollector() {
         scrapers = new Scraper[] {
-                new OpenSea1DScraper(),
+             /*   new OpenSea1DScraper(),
                 new NiftyGateway1DScraper(),
                 new Binance1DScraper(),
                 new Rarible1DScraper(),
@@ -34,9 +34,9 @@ public class DataCollector {
                 new NiftyGateway7DScraper(),
                 new Binance7DScraper(),
                 new Rarible7DScraper(),
-                new TwitterScraper(),
-                new NftPlazasScraper(),
-                new NewBitcoinsScraper(),
+              //  new TwitterScraper(),*/
+            //    new NftPlazasScraper(),
+            //    new NewBitcoinsScraper(),
                 new CoinTelegraphScraper()
         };
 

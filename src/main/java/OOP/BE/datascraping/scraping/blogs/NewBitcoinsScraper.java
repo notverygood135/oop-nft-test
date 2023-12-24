@@ -1,4 +1,5 @@
 package OOP.BE.datascraping.scraping.blogs;
+
 import OOP.BE.datascraping.scraping.Scraper;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
@@ -12,7 +13,8 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.util.HashMap;
 import java.util.Map;
-import static java.lang.Thread.*;
+
+import static java.lang.Thread.sleep;
 
 public class NewBitcoinsScraper implements Scraper {
     public static final int PAGE_NUMBER = 2;
@@ -20,9 +22,9 @@ public class NewBitcoinsScraper implements Scraper {
     public Map<String, JSONObject> scrape()  {
         Map<String, JSONObject> pageDataMap = new HashMap<>();
         try {
-
+         //   WebDriverManager.firefoxdriver().setup();
             FirefoxOptions options = new FirefoxOptions();
-//            options.addArguments("--headless");
+           options.addArguments("--headless");
 
             System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
 

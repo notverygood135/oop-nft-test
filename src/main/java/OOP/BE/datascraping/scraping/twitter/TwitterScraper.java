@@ -23,8 +23,9 @@ public class TwitterScraper implements Scraper {
         Map<String, JSONObject> sex = new LinkedHashMap<>();
         int id = 1;
         try {
+            //WebDriverManager.firefoxdriver().setup();
             FirefoxOptions options = new FirefoxOptions();
-//            options.addArguments("--headless");
+           options.addArguments("--headless");
 
             System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
 

@@ -35,6 +35,12 @@
             <artifactId>javafx-controls</artifactId>
             <version>20.0.1</version>
         </dependency>
+<dependency>
+        <groupId>io.github.bonigarcia</groupId>
+        <artifactId>webdrivermanager</artifactId>
+        <version>4.4.3</version> <!-- Use the latest version available -->
+        <scope>test</scope>
+    </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
