@@ -32,12 +32,6 @@ import javafx.scene.Node;
 public class NFT_MainScene implements Initializable {
 
     public void switchToMainScene(ActionEvent e) throws IOException{
-//        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/resources/OOP/screen/MainScene.fxml")));
-//        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-//        Scene scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/MainScreen.fxml"));
         Scene scene = new Scene(loader.load());
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();

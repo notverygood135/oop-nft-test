@@ -2,10 +2,14 @@ package OOP.FE.controller;
 
 import OOP.BE.datascraping.dataloader.EntitiesGenerator;
 import OOP.BE.datascraping.model.Entity;
+import OOP.BE.datascraping.model.blog.Blog;
 import OOP.BE.datascraping.model.twitter.Twitter;
 
+import OOP.FE.common.Tweet;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -62,64 +66,30 @@ public class TweetController implements Initializable {
     private SplitMenuButton sortDropDownMenu;
 
     @FXML
-    private MenuItem ascended;
-
-    @FXML
-    private MenuItem descended;
-
-    @FXML
     private MenuItem earliest;
 
     @FXML
     private MenuItem latest;
 
     @FXML
-    private List<Twitter> tweets;
+    public TextField searchText;
 
+    private ObservableList<Twitter> tweets = FXCollections.observableArrayList();
     private Set<String> currentTags = new HashSet<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        searchField.setDisable(true);
-
-        searchContainer.setOnMouseClicked(event -> {
-            if (searchField.isDisabled()) {
-                searchField.setDisable(false);
-                searchField.requestFocus();
-            }
-        });
-
-        searchField.focusedProperty().addListener((obs, oldValue, newValue) -> {
-            if (!newValue) {
-                searchField.setDisable(true);
-            }
-        });
-
-        if (searchField.getScene() != null) {
-            searchField.getScene().addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-                Node source = (Node) event.getSource();
-                Bounds bounds = searchContainer.localToScreen(searchContainer.getBoundsInLocal());
-
-                if (source != searchField && !bounds.contains(event.getScreenX(), event.getScreenY())) {
-                    if (!searchField.isFocused()) {
-                        searchField.setDisable(true);
-                    }
-                }
-            });
-        }
-              
         Map<String, Collection<Entity>> data = new EntitiesGenerator().generate();
         Collection<Entity> twit = data.get("Twitter");
-        tweets = new ArrayList<>(); // Initialize the tweets list
 
         for(Entity e: twit){
-            System.out.println(e);
             tweetListView.getItems().add((Twitter) e);
             tweets.add((Twitter) e); // Add tweets to the list
         }
 
         setupTaggingSystems();
         initializeSorting();
+        setSearchText();
     }
 
     private void displayPopularTags() {
@@ -143,11 +113,31 @@ public class TweetController implements Initializable {
         currentTags.addAll(popularTags); // Initialize current tags with popular tags
     }
 
+    void setSearchText() {
+        FilteredList<Twitter> filteredList = new FilteredList<>(tweets, b -> true);
+        searchText.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredList.setPredicate(tweet -> {
+                if (newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                    return true;
+                }
+                String searchKeyword = newValue.toLowerCase();
+
+                List<String> hashtags = tweet.getHashtags();
+                for (String hashtag : hashtags) {
+                    if (hashtag.toLowerCase().contains(searchKeyword)) {
+                        return true;
+                    }
+                }
+                return false;
+            });
+        });
+        tweetListView.setItems(filteredList);
+    }
+
     private void displayTweets() {
         ObservableList<Twitter> tweetContents = FXCollections.observableArrayList();
         tweetContents.addAll(tweets);
         tweetListView.setItems(tweetContents);
-        System.out.println(tweetListView);
     }
 
     private void addTagToFlowPane(String tagText) {
@@ -213,10 +203,8 @@ public class TweetController implements Initializable {
     // Handle sort dropdown button
     @FXML
     private void initializeSorting() {
-        ascended.setOnAction(event -> sortTweets(Comparator.comparing(Twitter::getUser)));
-        descended.setOnAction(event -> sortTweets(Comparator.comparing(Twitter::getUser).reversed()));
-        earliest.setOnAction(event -> sortTweets(Comparator.comparing(Twitter::getDate)));
-        latest.setOnAction(event -> sortTweets(Comparator.comparing(Twitter::getDate).reversed()));
+        earliest.setOnAction(event -> sortTweets(Comparator.comparing(Twitter::getDateTime)));
+        latest.setOnAction(event -> sortTweets(Comparator.comparing(Twitter::getDateTime).reversed()));
     }
 
     // Sort tweets

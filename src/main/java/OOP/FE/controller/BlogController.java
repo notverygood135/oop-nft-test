@@ -5,8 +5,11 @@ import OOP.BE.datascraping.dataloader.EntitiesGenerator;
 import OOP.BE.datascraping.model.Entity;
 import OOP.BE.datascraping.model.blog.Blog;
 
+import OOP.BE.datascraping.model.nftcollection.NFTCollection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -77,53 +80,48 @@ public class BlogController implements Initializable {
     private MenuItem latest;
 
     @FXML
-    private Button prevPage;
+    private TextField searchText;
 
-    @FXML
-    private Button nextPage;
-
-    @FXML
-    private List<Blog> blogs;
+    private ObservableList<Blog> blogs = FXCollections.observableArrayList();
 
     private Set<String> currentTags = new HashSet<>();
     private int page = 0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        searchField.setDisable(true);
-
-        searchContainer.setOnMouseClicked(event -> {
-            if (searchField.isDisabled()) {
-                searchField.setDisable(false);
-                searchField.requestFocus();
-            }
-        });
-
-        searchField.focusedProperty().addListener((obs, oldValue, newValue) -> {
-            if (!newValue) {
-                searchField.setDisable(true);
-            }
-        });
-
-        if (searchField.getScene() != null) {
-            searchField.getScene().addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-                Node source = (Node) event.getSource();
-                Bounds bounds = searchContainer.localToScreen(searchContainer.getBoundsInLocal());
-
-                if (source != searchField && !bounds.contains(event.getScreenX(), event.getScreenY())) {
-                    if (!searchField.isFocused()) {
-                        searchField.setDisable(true);
-                    }
-                }
-            });
-        }
+//        searchField.setDisable(true);
+//
+//        searchContainer.setOnMouseClicked(event -> {
+//            if (searchField.isDisabled()) {
+//                searchField.setDisable(false);
+//                searchField.requestFocus();
+//            }
+//        });
+//
+//        searchField.focusedProperty().addListener((obs, oldValue, newValue) -> {
+//            if (!newValue) {
+//                searchField.setDisable(true);
+//            }
+//        });
+//
+//        if (searchField.getScene() != null) {
+//            searchField.getScene().addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+//                Node source = (Node) event.getSource();
+//                Bounds bounds = searchContainer.localToScreen(searchContainer.getBoundsInLocal());
+//
+//                if (source != searchField && !bounds.contains(event.getScreenX(), event.getScreenY())) {
+//                    if (!searchField.isFocused()) {
+//                        searchField.setDisable(true);
+//                    }
+//                }
+//            });
+//        }
 
         Map<String, Collection<Entity>> data = new BlogGenerator().generate();
         Collection<Entity> blog = data.get("Blog");
-        blogs = new ArrayList<>(); // Initialize the blogs list
         int count = 0;
         for(Entity e: blog){
-            if (count++ < 10) {
+            if (count++ < 100) {
                 blogListView.getItems().add((Blog) e);
                 blogs.add((Blog) e); // Add blogs to the list
             }
@@ -148,7 +146,23 @@ public class BlogController implements Initializable {
 
         setupTaggingSystems();
         initializeSorting();
+        setSearchText();
     }
+
+    void setSearchText() {
+        FilteredList<Blog> filteredList = new FilteredList<>(blogs, b -> true);
+        searchText.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredList.setPredicate(blog -> {
+                if (newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                    return true;
+                }
+                String searchKeyword = newValue.toLowerCase();
+                return blog.getTitle().toLowerCase().contains(searchKeyword);
+            });
+        });
+        blogListView.setItems(filteredList);
+    }
+
 
     private void displayPopularTags() {
         Map<String, Integer> tagFrequency = new HashMap<>();
@@ -242,8 +256,8 @@ public class BlogController implements Initializable {
     private void initializeSorting() {
         ascended.setOnAction(event -> sortBlogs(Comparator.comparing(Blog::getTitle)));
         descended.setOnAction(event -> sortBlogs(Comparator.comparing(Blog::getTitle).reversed()));
-        earliest.setOnAction(event -> sortBlogs(Comparator.comparing(Blog::getDate)));
-        latest.setOnAction(event -> sortBlogs(Comparator.comparing(Blog::getDate).reversed()));
+        earliest.setOnAction(event -> sortBlogs(Comparator.comparing(Blog::getDateTime)));
+        latest.setOnAction(event -> sortBlogs(Comparator.comparing(Blog::getDateTime).reversed()));
     }
 
     // Sort blogs
@@ -378,14 +392,6 @@ public class BlogController implements Initializable {
     @FXML
     public void switchToMainScreen(ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/MainScreen.fxml"));
-        Scene scene = new Scene(loader.load(), 731, 657);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-    }
-
-    @FXML
-    public void switchToBlog(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/OOP/screen/Blog.fxml"));
         Scene scene = new Scene(loader.load(), 731, 657);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
