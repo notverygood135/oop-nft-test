@@ -61,6 +61,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ListView fx:id="postListView" layoutX="14.0" layoutY="261.0" prefHeight="265.0" prefWidth="804.0" />
+      <ListView fx:id="blogListView" layoutX="14.0" layoutY="261.0" prefHeight="265.0" prefWidth="804.0" />
    </children>
 </AnchorPane>
